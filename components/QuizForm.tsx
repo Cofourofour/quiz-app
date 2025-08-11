@@ -342,28 +342,16 @@ export default function QuizForm({ data }: QuizProps) {
                     📋 Copy Link
                   </button>
                   
-                  {/* More Options */}
+                  {/* Contact for Custom Quiz */}
                   <button
-                    onClick={async () => {
-                      if (navigator.share) {
-                        try {
-                          await navigator.share({
-                            title: 'Digital Nomad Type Quiz',
-                            text: `I just discovered I'm a ${result.name}! 🌍 What's your digital nomad type?`,
-                            url: process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
-                          })
-                        } catch (err) {
-                          console.log('Share cancelled or failed')
-                        }
-                      } else {
-                        alert('Native sharing not supported on this device. Use the other sharing options above!')
-                      }
+                    onClick={() => {
+                      window.open('mailto:Laurens.co404@gmail.com?subject=Custom Quiz Request&body=Hi Laurens, I would like to create my own customized quiz similar to the Digital Nomad Type Quiz. Please let me know how we can proceed!', '_blank')
                       setShowShareModal(false)
                     }}
                     className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
-                    style={{ backgroundColor: '#6B7280', color: 'white' }}
+                    style={{ backgroundColor: 'var(--primary)', color: 'var(--text-light)' }}
                   >
-                    📤 More
+                    � Custom Quiz
                   </button>
                 </div>
               </div>

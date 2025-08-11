@@ -217,12 +217,12 @@ export function generateResultEmail(email: string, result: any) {
             </a>
           </div>
           <p style="font-size: 12px; color: #c48c72; margin-top: 15px; font-style: italic;">
-            ✨ Copy this link to share anywhere: ${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}
+            📧 If you would like your own customized quiz, please contact Laurens.co404@gmail.com
           </p>
         </div>
         
         <div style="text-align: center;">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}" class="cta-button">
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}" class="cta-button" style="background-color: #b47775; color: #f7f5f4;">
             Take Quiz Again
           </a>
         </div>
