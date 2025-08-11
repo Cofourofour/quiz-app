@@ -137,34 +137,38 @@ export function generateResultEmail(email: string, result: any) {
           margin: 20px 0;
         }
         .share-section {
-          background-color: #e3dbd6;
+          background-color: #ede8e5;
           border-radius: 8px;
           padding: 20px;
           margin: 20px 0;
           text-align: center;
+          border: 2px solid #b47775;
         }
         .share-buttons {
           display: flex;
           justify-content: center;
-          gap: 10px;
+          gap: 12px;
           flex-wrap: wrap;
           margin-top: 15px;
         }
         .share-button {
           display: inline-block;
-          padding: 10px 15px;
-          border-radius: 6px;
+          padding: 12px 18px;
+          border-radius: 8px;
           text-decoration: none;
-          color: white;
+          color: #43362d;
           font-size: 14px;
-          font-weight: 500;
-          min-width: 100px;
+          font-weight: 600;
+          min-width: 120px;
           text-align: center;
+          background-color: #f7f5f4;
+          border: 2px solid #c48c72;
+          transition: all 0.2s ease;
         }
-        .facebook { background-color: #1877f2; }
-        .instagram { background-color: #E4405F; }
-        .whatsapp { background-color: #25D366; }
-        .twitter { background-color: #1DA1F2; }
+        .share-button:hover {
+          background-color: #c48c72;
+          color: #f7f5f4;
+        }
         @media (max-width: 600px) {
           .share-buttons {
             flex-direction: column;
@@ -190,15 +194,25 @@ export function generateResultEmail(email: string, result: any) {
         </div>
         
         <div class="share-section">
-          <h3 style="color: #b47775; margin: 0 0 10px 0;">Share Your Results!</h3>
+          <h3 style="color: #b47775; margin: 0 0 10px 0;">📢 Share Your Results!</h3>
           <p style="margin: 0 0 15px 0; color: #43362d;">Let your friends discover their digital nomad type too!</p>
           <div class="share-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}&quote=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%21" target="_blank" class="share-button facebook">📘 Facebook</a>
-            <a href="https://wa.me/?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" target="_blank" class="share-button whatsapp">💬 WhatsApp</a>
-            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F&url=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" target="_blank" class="share-button twitter">🐦 Twitter</a>
-            <a href="https://www.instagram.com/" target="_blank" class="share-button instagram">📸 Instagram</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+              📘 Facebook
+            </a>
+            <a href="https://api.whatsapp.com/send?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+              � WhatsApp
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+              � Twitter
+            </a>
+            <a href="mailto:?subject=Check%20out%20this%20Digital%20Nomad%20Quiz!&body=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20Find%20out%20your%20digital%20nomad%20type%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+              📧 Email
+            </a>
           </div>
-          <p style="font-size: 12px; color: #666; margin-top: 10px;">Note: Instagram doesn't support direct link sharing, but you can share a screenshot of your results!</p>
+          <p style="font-size: 12px; color: #c48c72; margin-top: 15px; font-style: italic;">
+            ✨ Copy this link to share anywhere: ${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}
+          </p>
         </div>
         
         <div style="text-align: center;">
