@@ -45,6 +45,7 @@ export default function QuizForm({ data }: QuizProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [result, setResult] = useState<QuizResult | null>(null)
   const [error, setError] = useState('')
+  const [showShareModal, setShowShareModal] = useState(false)
   const [validationErrors, setValidationErrors] = useState<{
     email?: string
     questions?: string[]
@@ -160,18 +161,17 @@ export default function QuizForm({ data }: QuizProps) {
     // Add click outside handler for share modal
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
-        const shareModal = document.getElementById('shareModal')
-        const shareButton = event.target as Element
-        if (shareModal && shareModal.style.display === 'block' && 
-            !shareModal.contains(shareButton) && 
-            !shareButton.closest('button')?.textContent?.includes('Share Quiz')) {
-          shareModal.style.display = 'none'
+        const target = event.target as Element
+        if (showShareModal && !target.closest('[data-share-modal]') && !target.closest('[data-share-button]')) {
+          setShowShareModal(false)
         }
       }
       
-      document.addEventListener('click', handleClickOutside)
-      return () => document.removeEventListener('click', handleClickOutside)
-    }, [])
+      if (showShareModal) {
+        document.addEventListener('click', handleClickOutside)
+        return () => document.removeEventListener('click', handleClickOutside)
+      }
+    }, [showShareModal])
 
     return (
       <div className="max-w-2xl mx-auto">
@@ -241,11 +241,10 @@ export default function QuizForm({ data }: QuizProps) {
           
           <div className="flex-1 relative">
             <button
-              onClick={() => {
-                const shareModal = document.getElementById('shareModal')
-                if (shareModal) {
-                  shareModal.style.display = shareModal.style.display === 'block' ? 'none' : 'block'
-                }
+              data-share-button
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowShareModal(!showShareModal)
               }}
               className="w-full py-3 px-6 text-lg font-semibold rounded-lg transition-all duration-200"
               style={{ 
@@ -257,87 +256,118 @@ export default function QuizForm({ data }: QuizProps) {
             </button>
             
             {/* Share Modal */}
-            <div 
-              id="shareModal"
-              className="absolute top-full left-0 right-0 mt-2 p-4 rounded-lg shadow-lg z-10"
-              style={{ 
-                backgroundColor: 'var(--card)',
-                border: '2px solid var(--primary)',
-                display: 'none'
-              }}
-            >
-              <h4 className="font-semibold mb-3 text-center" style={{ color: 'var(--text)' }}>
-                Share this quiz with friends!
-              </h4>
-              <div className="grid grid-cols-2 gap-3">
-                {/* WhatsApp */}
-                <button
-                  onClick={() => window.open(`https://api.whatsapp.com/send?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: '#25D366', color: 'white' }}
-                >
-                  💬 WhatsApp
-                </button>
-                
-                {/* Facebook */}
-                <button
-                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: '#1877F2', color: 'white' }}
-                >
-                  📘 Facebook
-                </button>
-                
-                {/* Twitter */}
-                <button
-                  onClick={() => window.open(`https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: '#1DA1F2', color: 'white' }}
-                >
-                  🐦 Twitter
-                </button>
-                
-                {/* Email */}
-                <button
-                  onClick={() => window.open(`mailto:?subject=Check%20out%20this%20Digital%20Nomad%20Quiz!&body=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20Find%20out%20your%20digital%20nomad%20type%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: 'var(--primary)', color: 'var(--text-light)' }}
-                >
-                  📧 Email
-                </button>
-                
-                {/* Copy Link */}
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)
-                    alert('Quiz link copied to clipboard!')
-                  }}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: 'var(--accent)', color: 'var(--text-light)' }}
-                >
-                  📋 Copy Link
-                </button>
-                
-                {/* More Options */}
-                <button
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({
-                        title: 'Digital Nomad Type Quiz',
-                        text: `I just discovered I'm a ${result.name}! 🌍 What's your digital nomad type?`,
-                        url: process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
-                      })
-                    } else {
-                      alert('Native sharing not supported on this device. Use the other sharing options above!')
-                    }
-                  }}
-                  className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all"
-                  style={{ backgroundColor: '#6B7280', color: 'white' }}
-                >
-                  📤 More
-                </button>
+            {showShareModal && (
+              <div 
+                data-share-modal
+                className="absolute top-full left-0 right-0 mt-2 p-4 rounded-lg shadow-lg z-50"
+                style={{ 
+                  backgroundColor: 'var(--card)',
+                  border: '2px solid var(--primary)',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)'
+                }}
+              >
+                <h4 className="font-semibold mb-3 text-center" style={{ color: 'var(--text)' }}>
+                  Share this quiz with friends!
+                </h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {/* WhatsApp */}
+                  <button
+                    onClick={() => {
+                      window.open(`https://api.whatsapp.com/send?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: '#25D366', color: 'white' }}
+                  >
+                    💬 WhatsApp
+                  </button>
+                  
+                  {/* Facebook */}
+                  <button
+                    onClick={() => {
+                      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: '#1877F2', color: 'white' }}
+                  >
+                    📘 Facebook
+                  </button>
+                  
+                  {/* Twitter */}
+                  <button
+                    onClick={() => {
+                      window.open(`https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: '#1DA1F2', color: 'white' }}
+                  >
+                    🐦 Twitter
+                  </button>
+                  
+                  {/* Email */}
+                  <button
+                    onClick={() => {
+                      window.open(`mailto:?subject=Check%20out%20this%20Digital%20Nomad%20Quiz!&body=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20Find%20out%20your%20digital%20nomad%20type%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)}`, '_blank')
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: 'var(--primary)', color: 'var(--text-light)' }}
+                  >
+                    📧 Email
+                  </button>
+                  
+                  {/* Copy Link */}
+                  <button
+                    onClick={async () => {
+                      try {
+                        await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin)
+                        alert('Quiz link copied to clipboard!')
+                      } catch (err) {
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea')
+                        textArea.value = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+                        document.body.appendChild(textArea)
+                        textArea.select()
+                        document.execCommand('copy')
+                        document.body.removeChild(textArea)
+                        alert('Quiz link copied to clipboard!')
+                      }
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: 'var(--accent)', color: 'var(--text-light)' }}
+                  >
+                    📋 Copy Link
+                  </button>
+                  
+                  {/* More Options */}
+                  <button
+                    onClick={async () => {
+                      if (navigator.share) {
+                        try {
+                          await navigator.share({
+                            title: 'Digital Nomad Type Quiz',
+                            text: `I just discovered I'm a ${result.name}! 🌍 What's your digital nomad type?`,
+                            url: process.env.NEXT_PUBLIC_SITE_URL || window.location.origin
+                          })
+                        } catch (err) {
+                          console.log('Share cancelled or failed')
+                        }
+                      } else {
+                        alert('Native sharing not supported on this device. Use the other sharing options above!')
+                      }
+                      setShowShareModal(false)
+                    }}
+                    className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
+                    style={{ backgroundColor: '#6B7280', color: 'white' }}
+                  >
+                    📤 More
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
