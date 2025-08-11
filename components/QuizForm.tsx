@@ -157,17 +157,6 @@ export default function QuizForm({ data }: QuizProps) {
 
   // Show result page
   if (step === 'result' && result) {
-    // Get personality-specific icon
-    const getPersonalityIcon = (key: string) => {
-      const icons = {
-        'A': '🧑‍💻', // Social Butterfly - person at computer (social/tech)
-        'B': '☕', // Creative Explorer - coffee (creativity/exploration)
-        'C': '🏄', // Free-Spirited Adventurer - surfer (adventure/freedom)
-        'D': '🌿'  // Mindful Minimalist - leaf (mindfulness/nature)
-      }
-      return icons[key as keyof typeof icons] || '✨'
-    }
-
     return (
       <div className="max-w-2xl mx-auto">
         <div 
