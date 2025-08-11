@@ -87,16 +87,20 @@ export function generateResultEmail(email: string, result: any) {
           border-bottom: 2px solid #b47775;
         }
         .logo {
-          font-size: 28px;
-          font-weight: bold;
+          font-size: 32px;
+          font-weight: 800;
           color: #b47775;
-          margin-bottom: 10px;
+          margin-bottom: 5px;
+          letter-spacing: -0.5px;
         }
         .result-name {
-          font-size: 24px;
-          font-weight: bold;
+          font-size: 28px;
+          font-weight: 700;
           color: #b47775;
-          margin: 20px 0;
+          margin: 25px 0;
+          text-align: center;
+          letter-spacing: 0.3px;
+          text-shadow: 0 1px 2px rgba(180, 119, 117, 0.1);
         }
         .content {
           font-size: 16px;
@@ -183,11 +187,13 @@ export function generateResultEmail(email: string, result: any) {
     <body>
       <div class="container">
         <div class="header">
-          <div class="logo">Co404</div>
-          <div>Your Digital Nomad Quiz Results</div>
+          <div class="logo">✨ Co404 ✨</div>
+          <div style="font-size: 18px; color: #c48c72; font-weight: 600; letter-spacing: 0.5px; margin-top: 8px;">
+            🌍 Your Digital Nomad Journey Revealed
+          </div>
         </div>
         
-        <div class="result-name">${result.name}</div>
+        <div class="result-name">🎯 You're a ${result.name}!</div>
         
         <div class="content">
           <p>${emailContent}</p>
@@ -231,7 +237,7 @@ export function generateResultEmail(email: string, result: any) {
   `
 
   return {
-    subject: `Your Result: ${result.name} - Co404 Quiz`,
+    subject: `🌍 You're a ${result.name}! Your nomad journey revealed ✨`,
     html,
     text: emailContent
   }
