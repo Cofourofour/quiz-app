@@ -156,19 +156,22 @@ export default function QuizForm({ data }: QuizProps) {
     }
   }
 
-  // Add click outside handler for share modal - must be outside conditional rendering
+  // Add click outside handler for share modal
   useEffect(() => {
-    if (step === 'result' && showShareModal) {
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as Element
-        if (!target.closest('[data-share-modal]') && !target.closest('[data-share-button]')) {
-          setShowShareModal(false)
-        }
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (!target.closest('[data-share-modal]') && !target.closest('[data-share-button]')) {
+        setShowShareModal(false)
       }
-      
+    }
+
+    if (step === 'result' && showShareModal) {
       document.addEventListener('click', handleClickOutside)
       return () => document.removeEventListener('click', handleClickOutside)
     }
+    
+    // Always return a cleanup function, even if empty
+    return () => {}
   }, [step, showShareModal])
 
   // Show result page
