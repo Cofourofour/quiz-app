@@ -208,15 +208,67 @@ export default function QuizForm({ data }: QuizProps) {
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--text)' }}>
-            Check Your Email!
+          <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text)' }}>
+            🎉 Great job completing the quiz!
           </h3>
-          <p style={{ color: 'var(--text)' }}>
-            We've sent your detailed results to <strong>{email}</strong>
+          <p className="text-lg mb-4" style={{ color: 'var(--text)' }}>
+            Your personalized results have been sent to:
           </p>
-          <p className="text-sm mt-2" style={{ color: 'var(--accent)' }}>
-            📧 Sent from co404coliving@gmail.com
+          <p className="text-lg font-semibold mb-4" style={{ color: 'var(--primary)' }}>
+            {email}
           </p>
+          <div className="text-sm space-y-2" style={{ color: 'var(--text)' }}>
+            <p>📧 <strong>Sent from:</strong> co404coliving@gmail.com</p>
+            <p>⏱️ <strong>Delivery time:</strong> Usually within 1-2 minutes</p>
+            <p>📂 <strong>Can't find it?</strong> Check your spam/junk folder</p>
+            <p>🔄 <strong>Still missing?</strong> Check your promotions tab (Gmail users)</p>
+          </div>
+          
+          <div 
+            className="mt-6 p-4 rounded-lg border-l-4"
+            style={{ 
+              backgroundColor: 'var(--card)', 
+              borderColor: 'var(--primary)'
+            }}
+          >
+            <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>
+              � <strong>Pro tip:</strong> Add co404coliving@gmail.com to your contacts to ensure future emails reach your inbox!
+            </p>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-4 mt-8">
+          <button
+            onClick={() => {
+              setStep('quiz')
+              setEmail('')
+              setConsent(false)
+              setAnswers({})
+              setResult(null)
+              setError('')
+              setValidationErrors({})
+            }}
+            className="flex-1 py-3 px-6 text-lg font-semibold rounded-lg transition-all duration-200 border-2"
+            style={{ 
+              borderColor: 'var(--primary)',
+              color: 'var(--primary)',
+              backgroundColor: 'transparent'
+            }}
+          >
+            🔄 Take Quiz Again
+          </button>
+          
+          <button
+            onClick={() => window.open(`mailto:?subject=Check out this Digital Nomad Quiz!&body=I just discovered I'm a ${result.name}! Find out your digital nomad type: ${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}`, '_blank')}
+            className="flex-1 py-3 px-6 text-lg font-semibold rounded-lg transition-all duration-200"
+            style={{ 
+              backgroundColor: 'var(--accent)',
+              color: 'var(--text-light)'
+            }}
+          >
+            📧 Share Quiz
+          </button>
         </div>
 
         {/* Embed Code */}

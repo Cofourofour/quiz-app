@@ -64,23 +64,6 @@ export default function Home() {
                 />
               </svg>
             </Link>
-            
-            <div className="text-center">
-              <p className="text-sm mb-2" style={{ color: 'var(--text)' }}>
-                Or try the demo version (no database required):
-              </p>
-              <Link
-                href="/quiz/demo"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg border-2 transition-all duration-200 hover:opacity-90"
-                style={{ 
-                  borderColor: 'var(--accent)', 
-                  color: 'var(--accent)',
-                  backgroundColor: 'transparent'
-                }}
-              >
-                Demo Quiz
-              </Link>
-            </div>
           </div>
 
           {/* Features */}
