@@ -156,23 +156,23 @@ export default function QuizForm({ data }: QuizProps) {
     }
   }
 
-  // Show result page
-  if (step === 'result' && result) {
-    // Add click outside handler for share modal
-    useEffect(() => {
+  // Add click outside handler for share modal - must be outside conditional rendering
+  useEffect(() => {
+    if (step === 'result' && showShareModal) {
       const handleClickOutside = (event: MouseEvent) => {
         const target = event.target as Element
-        if (showShareModal && !target.closest('[data-share-modal]') && !target.closest('[data-share-button]')) {
+        if (!target.closest('[data-share-modal]') && !target.closest('[data-share-button]')) {
           setShowShareModal(false)
         }
       }
       
-      if (showShareModal) {
-        document.addEventListener('click', handleClickOutside)
-        return () => document.removeEventListener('click', handleClickOutside)
-      }
-    }, [showShareModal])
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [step, showShareModal])
 
+  // Show result page
+  if (step === 'result' && result) {
     return (
       <div className="max-w-2xl mx-auto">
         <div 
