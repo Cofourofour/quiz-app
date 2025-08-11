@@ -171,32 +171,7 @@ export default function QuizForm({ data }: QuizProps) {
     return (
       <div className="max-w-2xl mx-auto">
         <div 
-          className="p-8 rounded-lg text-center mb-8"
-          style={{ backgroundColor: 'var(--card)' }}
-        >
-          <div 
-            className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl"
-            style={{ backgroundColor: 'var(--primary)', color: 'var(--text-light)' }}
-          >
-            {getPersonalityIcon(result.key)}
-          </div>
-          <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text)' }}>
-            {result.name}
-          </h2>
-          {result.headline && (
-            <p className="text-xl mb-4" style={{ color: 'var(--accent)' }}>
-              {result.headline}
-            </p>
-          )}
-          {result.description && (
-            <p className="text-lg leading-relaxed" style={{ color: 'var(--text)' }}>
-              {result.description}
-            </p>
-          )}
-        </div>
-
-        <div 
-          className="p-6 rounded-lg text-center"
+          className="p-8 rounded-lg text-center"
           style={{ backgroundColor: 'var(--background)' }}
         >
           <div 
