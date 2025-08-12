@@ -222,16 +222,13 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   if (currentStep === 'intro') {
     return (
       <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
-        {/* Header */}
-        <div className={`flex justify-center ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
-          <h1 className="text-base font-bold" style={{ color: 'var(--primary)' }}>
-            Co404 Quiz
-          </h1>
-        </div>
-
         {/* Content */}
         <div className={`flex-1 flex flex-col justify-center ${contentPadding}`}>
           <div className="text-center max-w-md mx-auto">
+            <h1 className="text-base font-bold mb-1" style={{ color: 'var(--primary)' }}>
+              Co404 Quiz
+            </h1>
+            
             <h2 className={`${device === 'mobile' ? 'text-base' : 'text-lg'} font-bold mb-1`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
