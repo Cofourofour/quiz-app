@@ -43,9 +43,10 @@ interface QuizWrapperProps {
 function QuizContent({ data }: QuizWrapperProps) {
   const searchParams = useSearchParams()
   const isPopup = searchParams.get('popup') === 'true'
+  const device = searchParams.get('device') || 'desktop' // desktop or mobile
 
   if (isPopup) {
-    return <PopupQuizForm data={data} />
+    return <PopupQuizForm data={data} device={device} />
   }
 
   return <QuizForm data={data} />
