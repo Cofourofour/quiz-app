@@ -225,10 +225,6 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Content starting at the very top */}
         <div className="p-2">
           <div className="text-center max-w-md mx-auto">
-            <h1 className="text-base font-bold mb-0.5" style={{ color: 'var(--primary)' }}>
-              Co404 Quiz
-            </h1>
-            
             <h2 className={`${device === 'mobile' ? 'text-base' : 'text-lg'} font-bold mb-0.5`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
