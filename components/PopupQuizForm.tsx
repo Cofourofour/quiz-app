@@ -50,6 +50,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   const [emailError, setEmailError] = useState('')
   const [isTransitioning, setIsTransitioning] = useState(false)
 
+  // Debug log to confirm popup component is loading
+  useEffect(() => {
+    console.log('PopupQuizForm loaded - device:', device)
+  }, [device])
+
   // Add effect to hide header/footer when in popup mode
   useEffect(() => {
     const isInPopup = window.location.search.includes('popup=true')
@@ -198,16 +203,6 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
-    }
-  }
-
-  const closePopup = () => {
-    if (window.parent !== window) {
-      // If in iframe, post message to parent
-      window.parent.postMessage({ type: 'closeQuiz' }, '*')
-    } else {
-      // If not in iframe, close window if opened by script
-      window.close()
     }
   }
 
