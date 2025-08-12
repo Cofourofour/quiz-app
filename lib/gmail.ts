@@ -160,12 +160,12 @@ export function generateResultEmail(email: string, result: any) {
           padding: 12px 18px;
           border-radius: 8px;
           text-decoration: none;
-          color: #43362d;
+          color: #f7f5f4;
           font-size: 14px;
           font-weight: 600;
           min-width: 120px;
           text-align: center;
-          background-color: #f7f5f4;
+          background-color: #b47775;
           border: 2px solid #c48c72;
           transition: all 0.2s ease;
         }
@@ -209,16 +209,16 @@ export function generateResultEmail(email: string, result: any) {
           <h3 style="color: #b47775; margin: 0 0 10px 0;">📢 Share Your Results!</h3>
           <p style="margin: 0 0 15px 0; color: #43362d;">Let your friends discover their digital nomad type too!</p>
           <div class="share-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app')}" class="share-button">
               📘 Facebook
             </a>
-            <a href="https://api.whatsapp.com/send?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+            <a href="https://api.whatsapp.com/send?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app')}" class="share-button">
               � WhatsApp
             </a>
-            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+            <a href="https://twitter.com/intent/tweet?text=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20What%27s%20your%20digital%20nomad%20type%3F%20Take%20the%20quiz%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app')}" class="share-button">
               � Twitter
             </a>
-            <a href="mailto:?subject=Check%20out%20this%20Digital%20Nomad%20Quiz!&body=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20Find%20out%20your%20digital%20nomad%20type%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003')}" class="share-button">
+            <a href="mailto:?subject=Check%20out%20this%20Digital%20Nomad%20Quiz!&body=I%20just%20discovered%20I%27m%20a%20${encodeURIComponent(result.name)}%21%20%F0%9F%8C%8D%20Find%20out%20your%20digital%20nomad%20type%3A%20${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app')}" class="share-button">
               📧 Email
             </a>
           </div>
@@ -235,7 +235,7 @@ export function generateResultEmail(email: string, result: any) {
         </div>
         
         <div style="text-align: center;">
-          <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}" class="cta-button" style="background-color: #b47775; color: #f7f5f4;">
+          <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app'}" class="cta-button" style="background-color: #b47775; color: #f7f5f4;">
             Take Quiz Again
           </a>
         </div>

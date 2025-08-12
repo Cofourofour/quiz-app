@@ -280,7 +280,7 @@ export default function QuizForm({ data }: QuizProps) {
                       setShowShareModal(false)
                     }}
                     className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
-                    style={{ backgroundColor: '#25D366', color: 'white' }}
+                    style={{ backgroundColor: '#8B7355', color: 'var(--text-light)' }}
                   >
                     💬 WhatsApp
                   </button>
@@ -292,7 +292,7 @@ export default function QuizForm({ data }: QuizProps) {
                       setShowShareModal(false)
                     }}
                     className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
-                    style={{ backgroundColor: '#1877F2', color: 'white' }}
+                    style={{ backgroundColor: '#A0826D', color: 'var(--text-light)' }}
                   >
                     📘 Facebook
                   </button>
@@ -304,7 +304,7 @@ export default function QuizForm({ data }: QuizProps) {
                       setShowShareModal(false)
                     }}
                     className="p-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
-                    style={{ backgroundColor: '#1DA1F2', color: 'white' }}
+                    style={{ backgroundColor: '#B5956A', color: 'var(--text-light)' }}
                   >
                     🐦 Twitter
                   </button>
