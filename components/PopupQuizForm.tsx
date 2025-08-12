@@ -223,7 +223,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     return (
       <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
         {/* Content */}
-        <div className={`flex-1 flex flex-col justify-center ${contentPadding}`}>
+        <div className={`flex-1 ${contentPadding} pt-4`}>
           <div className="text-center max-w-md mx-auto">
             <h1 className="text-base font-bold mb-1" style={{ color: 'var(--primary)' }}>
               Co404 Quiz
