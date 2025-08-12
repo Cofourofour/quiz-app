@@ -1,11 +1,15 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { QuizDB } from '@/lib/database'
-import QuizForm from '@/components/QuizForm'
+import QuizWrapper from '@/components/QuizWrapper'
+import { Suspense } from 'react'
 
 interface QuizPageProps {
   params: Promise<{
     slug: string
+  }>
+  searchParams?: Promise<{
+    popup?: string
   }>
 }
 
@@ -73,14 +77,26 @@ async function getQuizData(slug: string) {
   }
 }
 
-export default async function QuizPage({ params }: QuizPageProps) {
+export default async function QuizPage({ params, searchParams }: QuizPageProps) {
   const { slug } = await params
+  const search = searchParams ? await searchParams : {}
+  const isPopup = search?.popup === 'true'
   const data = await getQuizData(slug)
 
   if (!data) {
     notFound()
   }
 
+  // If popup mode, return minimal layout
+  if (isPopup) {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <QuizWrapper data={data} />
+      </Suspense>
+    )
+  }
+
+  // Regular layout for full page
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)' }}>
       {/* Header */}
@@ -111,7 +127,9 @@ export default async function QuizPage({ params }: QuizPageProps) {
           </p>
         </div>
 
-        <QuizForm data={data} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <QuizWrapper data={data} />
+        </Suspense>
       </main>
 
       {/* Footer */}
@@ -126,7 +144,7 @@ export default async function QuizPage({ params }: QuizPageProps) {
   )
 }
 
-export async function generateMetadata({ params }: QuizPageProps) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const data = await getQuizData(slug)
   

@@ -64,6 +64,16 @@ export default function Home() {
                 />
               </svg>
             </Link>
+            
+            <div className="text-center">
+              <Link
+                href="/embed-demo"
+                className="text-sm underline hover:opacity-75"
+                style={{ color: 'var(--primary)' }}
+              >
+                View Popup Integration Demo
+              </Link>
+            </div>
           </div>
 
           {/* Features */}

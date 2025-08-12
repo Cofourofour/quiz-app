@@ -293,3 +293,5 @@ For questions or issues:
 ## License
 
 MIT License - feel free to use this project as a foundation for your own quiz applications!
+#   D e p l o y m e n t   t r i g g e r   f o r   c a c h e   i n v a l i d a t i o n  
+ 
