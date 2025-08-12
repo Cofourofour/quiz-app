@@ -105,7 +105,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   const totalQuestions = sortedQuestions.length
   
   // Responsive heights based on device
-  const containerHeight = device === 'mobile' ? 'h-[450px]' : 'h-[500px]'
+  const containerHeight = device === 'mobile' ? 'h-[400px]' : 'h-[450px]'
   const contentPadding = device === 'mobile' ? 'p-1' : 'p-2'
   const headerPadding = device === 'mobile' ? 'p-1' : 'p-1'
 
@@ -230,8 +230,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         </div>
 
         {/* Content */}
-        <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
-          <div className="text-center max-w-md">
+        <div className={`flex-1 flex flex-col justify-center ${contentPadding}`}>
+          <div className="text-center max-w-md mx-auto">
             <h2 className={`${device === 'mobile' ? 'text-base' : 'text-lg'} font-bold mb-1`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
@@ -241,7 +241,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
             </h2>
             
             <p className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-2`} style={{ color: 'var(--text)' }}>
-              Take our quick quiz to discover your digital nomad personality and get personalized tips!
+              Answer these 6 questions to discover your digital nomad personality type.
             </p>
 
             <button
