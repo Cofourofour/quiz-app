@@ -49,6 +49,51 @@ export default function PopupQuizForm({ data }: PopupQuizProps) {
   const [emailError, setEmailError] = useState('')
   const [isTransitioning, setIsTransitioning] = useState(false)
 
+  // Add effect to hide header/footer when in popup mode
+  useEffect(() => {
+    const isInPopup = window.location.search.includes('popup=true')
+    if (isInPopup) {
+      // Hide the main page header and footer
+      const header = document.querySelector('header')
+      const footer = document.querySelector('footer')
+      const main = document.querySelector('main')
+      
+      if (header) header.style.display = 'none'
+      if (footer) footer.style.display = 'none'
+      if (main) {
+        main.style.padding = '0'
+        main.style.margin = '0'
+        main.style.maxWidth = 'none'
+      }
+      
+      // Set body styles for popup
+      document.body.style.margin = '0'
+      document.body.style.padding = '0'
+      document.body.style.overflow = 'hidden'
+    }
+    
+    return () => {
+      // Cleanup on unmount
+      if (isInPopup) {
+        const header = document.querySelector('header')
+        const footer = document.querySelector('footer')
+        const main = document.querySelector('main')
+        
+        if (header) header.style.display = ''
+        if (footer) footer.style.display = ''
+        if (main) {
+          main.style.padding = ''
+          main.style.margin = ''
+          main.style.maxWidth = ''
+        }
+        
+        document.body.style.margin = ''
+        document.body.style.padding = ''
+        document.body.style.overflow = ''
+      }
+    }
+  }, [])
+
   const sortedQuestions = data.questions.sort((a, b) => a.position - b.position)
   const currentQuestion = sortedQuestions[currentQuestionIndex]
   const totalQuestions = sortedQuestions.length

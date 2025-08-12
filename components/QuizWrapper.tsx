@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import QuizForm from './QuizForm'
 import PopupQuizForm from './PopupQuizForm'
 
@@ -39,7 +40,7 @@ interface QuizWrapperProps {
   data: QuizData
 }
 
-export default function QuizWrapper({ data }: QuizWrapperProps) {
+function QuizContent({ data }: QuizWrapperProps) {
   const searchParams = useSearchParams()
   const isPopup = searchParams.get('popup') === 'true'
 
@@ -48,4 +49,12 @@ export default function QuizWrapper({ data }: QuizWrapperProps) {
   }
 
   return <QuizForm data={data} />
+}
+
+export default function QuizWrapper({ data }: QuizWrapperProps) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <QuizContent data={data} />
+    </Suspense>
+  )
 }

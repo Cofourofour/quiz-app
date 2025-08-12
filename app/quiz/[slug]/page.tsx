@@ -8,9 +8,6 @@ interface QuizPageProps {
   params: Promise<{
     slug: string
   }>
-  searchParams?: Promise<{
-    popup?: string
-  }>
 }
 
 interface Quiz {
@@ -77,26 +74,15 @@ async function getQuizData(slug: string) {
   }
 }
 
-export default async function QuizPage({ params, searchParams }: QuizPageProps) {
+export default async function QuizPage({ params }: QuizPageProps) {
   const { slug } = await params
-  const search = searchParams ? await searchParams : {}
-  const isPopup = search?.popup === 'true'
   const data = await getQuizData(slug)
 
   if (!data) {
     notFound()
   }
 
-  // If popup mode, return minimal layout
-  if (isPopup) {
-    return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <QuizWrapper data={data} />
-      </Suspense>
-    )
-  }
-
-  // Regular layout for full page
+  // Always use the wrapper component which handles popup detection client-side
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)' }}>
       {/* Header */}
@@ -127,9 +113,7 @@ export default async function QuizPage({ params, searchParams }: QuizPageProps) 
           </p>
         </div>
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <QuizWrapper data={data} />
-        </Suspense>
+        <QuizWrapper data={data} />
       </main>
 
       {/* Footer */}
