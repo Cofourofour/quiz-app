@@ -193,10 +193,16 @@ export function generateResultEmail(email: string, result: any) {
           </div>
         </div>
         
-        <div class="result-name">🎯 You're a ${result.name}!</div>
+        <div class="result-name">🎯 You're ${result.name}!</div>
         
         <div class="content">
           <p>${emailContent}</p>
+          
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="https://co404.com/booking" class="cta-button" style="background-color: #b47775; color: #f7f5f4; text-decoration: none;">
+              🏠 Explore Our Spaces
+            </a>
+          </div>
         </div>
         
         <div class="share-section">
@@ -221,6 +227,13 @@ export function generateResultEmail(email: string, result: any) {
           </p>
         </div>
         
+        <div style="text-align: center; margin: 20px 0;">
+          <p style="color: #43362d; font-size: 14px; line-height: 1.6;">
+            P.S - We share all the good stuff on Instagram - travel inspo, nomad tips, and what it's like to live with us. 
+            <a href="https://www.instagram.com/co404coliving/" style="color: #b47775; text-decoration: none; font-weight: bold;">Follow us here!</a>
+          </p>
+        </div>
+        
         <div style="text-align: center;">
           <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003'}" class="cta-button" style="background-color: #b47775; color: #f7f5f4;">
             Take Quiz Again
@@ -230,6 +243,7 @@ export function generateResultEmail(email: string, result: any) {
         <div class="footer">
           <p>Thanks for taking our quiz!</p>
           <p>Co404 - Discover Your Digital Nomad Type</p>
+          <p style="font-size: 12px; color: #999;">© 2024 Co404. All rights reserved.</p>
         </div>
       </div>
     </body>
