@@ -369,7 +369,7 @@ export default function QuizForm({ data }: QuizProps) {
           </h4>
           <div className="p-3 rounded text-sm font-mono" style={{ backgroundColor: 'var(--background)' }}>
             <code style={{ color: 'var(--text)' }}>
-              {`<iframe src="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/embed/${data.quiz.slug}" width="100%" height="720" style="border:0;"></iframe>`}
+              {`<iframe src="${process.env.NEXT_PUBLIC_SITE_URL || 'https://co404quiz.vercel.app'}/embed/${data.quiz.slug}" width="100%" height="720" style="border:0;"></iframe>`}
             </code>
           </div>
         </div>

@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             style={{ backgroundColor: 'var(--card)', color: 'var(--text)' }}
           >
             <p className="text-sm mb-6" style={{ color: 'var(--text)' }}>
-              Last updated: January 2024
+              Last updated: January 2025
             </p>
 
             <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--text)' }}>

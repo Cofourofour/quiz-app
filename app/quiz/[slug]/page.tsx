@@ -118,7 +118,7 @@ export default async function QuizPage({ params }: QuizPageProps) {
       <footer className="container mx-auto px-4 py-8 mt-16 border-t" style={{ borderColor: 'var(--card)' }}>
         <div className="text-center">
           <p style={{ color: 'var(--text)' }}>
-            © 2024 Co404. All rights reserved.
+            © 2025 Co404. All rights reserved.
           </p>
         </div>
       </footer>

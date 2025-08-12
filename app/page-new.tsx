@@ -133,7 +133,7 @@ export default function Home() {
       <footer className="container mx-auto px-4 py-8 mt-16 border-t" style={{ borderColor: 'var(--card)' }}>
         <div className="text-center">
           <p style={{ color: 'var(--text)' }}>
-            © 2024 Co404. All rights reserved.
+            © 2025 Co404. All rights reserved.
           </p>
           <div className="mt-4 space-x-6">
             <Link href="/legal/terms" className="hover:opacity-75" style={{ color: 'var(--text)' }}>

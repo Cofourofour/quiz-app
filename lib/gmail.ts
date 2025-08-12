@@ -243,7 +243,7 @@ export function generateResultEmail(email: string, result: any) {
         <div class="footer">
           <p>Thanks for taking our quiz!</p>
           <p>Co404 - Discover Your Digital Nomad Type</p>
-          <p style="font-size: 12px; color: #999;">© 2024 Co404. All rights reserved.</p>
+          <p style="font-size: 12px; color: #999;">© 2025 Co404. All rights reserved.</p>
         </div>
       </div>
     </body>
