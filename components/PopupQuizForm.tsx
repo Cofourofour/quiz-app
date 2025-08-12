@@ -106,8 +106,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   
   // Responsive heights based on device
   const containerHeight = device === 'mobile' ? 'h-[500px]' : 'h-[600px]'
-  const contentPadding = device === 'mobile' ? 'p-3' : 'p-4'
-  const headerPadding = device === 'mobile' ? 'p-2' : 'p-3'
+  const contentPadding = device === 'mobile' ? 'p-2' : 'p-3'
+  const headerPadding = device === 'mobile' ? 'p-1' : 'p-1'
 
   const handleStartQuiz = () => {
     setCurrentStep('question')
@@ -223,8 +223,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     return (
       <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
         {/* Header */}
-        <div className={`flex items-center justify-between ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
-          <h1 className="text-lg font-bold" style={{ color: 'var(--primary)' }}>
+        <div className={`flex justify-center ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
+          <h1 className="text-base font-bold" style={{ color: 'var(--primary)' }}>
             Co404 Quiz
           </h1>
         </div>
@@ -232,7 +232,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Content */}
         <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
           <div className="text-center max-w-md">
-            <h2 className={`${device === 'mobile' ? 'text-xl' : 'text-2xl md:text-3xl'} font-bold mb-3`} style={{ color: 'var(--text)' }}>
+            <h2 className={`${device === 'mobile' ? 'text-lg' : 'text-xl'} font-bold mb-2`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
                 Digital Nomad
@@ -240,7 +240,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               Are You?
             </h2>
             
-            <p className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-4`} style={{ color: 'var(--text)' }}>
+            <p className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-3`} style={{ color: 'var(--text)' }}>
               Take our quick quiz to discover your digital nomad personality and get personalized tips!
             </p>
 
@@ -330,7 +330,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     return (
       <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
         {/* Header */}
-        <div className={`flex items-center justify-between ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
+        <div className={`flex justify-center ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
           <span className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} font-medium`} style={{ color: 'var(--text)' }}>
             Almost done!
           </span>
@@ -418,7 +418,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     return (
       <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
         {/* Header */}
-        <div className={`flex items-center justify-between ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
+        <div className={`flex justify-center ${headerPadding} border-b`} style={{ borderColor: 'var(--primary)', backgroundColor: 'var(--card)' }}>
           <span className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} font-medium`} style={{ color: 'var(--text)' }}>
             Your Result
           </span>
