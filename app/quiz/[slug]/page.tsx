@@ -86,26 +86,18 @@ export default async function QuizPage({ params }: QuizPageProps) {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background)' }}>
       {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between">
+      <header className="container mx-auto px-4 py-3">
+        <div className="flex items-center justify-center">
           <Link href="/" className="text-2xl font-bold hover:opacity-75" style={{ color: 'var(--primary)' }}>
             Co404 Quiz
           </Link>
-          <nav className="hidden md:flex space-x-6">
-            <Link href="/legal/terms" className="hover:opacity-75" style={{ color: 'var(--text)' }}>
-              Terms
-            </Link>
-            <Link href="/legal/privacy" className="hover:opacity-75" style={{ color: 'var(--text)' }}>
-              Privacy
-            </Link>
-          </nav>
         </div>
       </header>
 
       {/* Quiz Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+      <main className="container mx-auto px-4 py-4">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text)' }}>
             {data.quiz.title}
           </h1>
           <p className="text-lg" style={{ color: 'var(--text)' }}>

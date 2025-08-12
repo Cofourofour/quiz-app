@@ -106,8 +106,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   
   // Responsive heights based on device
   const containerHeight = device === 'mobile' ? 'h-[500px]' : 'h-[600px]'
-  const contentPadding = device === 'mobile' ? 'p-4' : 'p-6'
-  const headerPadding = device === 'mobile' ? 'p-3' : 'p-4'
+  const contentPadding = device === 'mobile' ? 'p-3' : 'p-4'
+  const headerPadding = device === 'mobile' ? 'p-2' : 'p-3'
 
   const handleStartQuiz = () => {
     setCurrentStep('question')
@@ -232,7 +232,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Content */}
         <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
           <div className="text-center max-w-md">
-            <h2 className={`${device === 'mobile' ? 'text-xl' : 'text-2xl md:text-3xl'} font-bold mb-4`} style={{ color: 'var(--text)' }}>
+            <h2 className={`${device === 'mobile' ? 'text-xl' : 'text-2xl md:text-3xl'} font-bold mb-3`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
                 Digital Nomad
@@ -240,7 +240,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               Are You?
             </h2>
             
-            <p className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-6`} style={{ color: 'var(--text)' }}>
+            <p className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-4`} style={{ color: 'var(--text)' }}>
               Take our quick quiz to discover your digital nomad personality and get personalized tips!
             </p>
 
