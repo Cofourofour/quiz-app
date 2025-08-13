@@ -284,7 +284,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
             {currentQuestion.title}
           </h3>
 
-          <div className="space-y-0 overflow-y-auto px-2" style={{ height: 'calc(100% - 20px)' }}>
+          <div className="space-y-0 overflow-y-auto px-4" style={{ height: 'calc(100% - 20px)' }}>
             {currentQuestion.options.map((option) => (
               <button
                 key={option.id}
@@ -297,7 +297,10 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   color: 'var(--text)',
                   marginBottom: '3px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  maxWidth: 'calc(100% - 8px)',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'var(--primary)'
