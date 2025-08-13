@@ -239,7 +239,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
 
             <button
               onClick={handleStartQuiz}
-              className={`w-full px-1 ${device === 'mobile' ? 'py-2 text-sm' : 'py-0 text-xs'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
+              className={`w-full px-1 ${device === 'mobile' ? 'py-2 text-sm' : 'py-1 text-xs'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
               style={{ 
                 backgroundColor: 'var(--primary)', 
                 color: 'var(--text-light)',
@@ -290,7 +290,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                 key={option.id}
                 onClick={() => handleAnswerSelect(option)}
                 disabled={isTransitioning}
-                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-0'} text-left rounded border transition-all duration-200 hover:scale-105 disabled:opacity-50`}
+                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-0'} text-left rounded border transition-all duration-200 hover:bg-opacity-90 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--card)',
                   borderColor: 'var(--primary)',
@@ -298,8 +298,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   marginBottom: '1px'
                 }}
               >
-                <div className={`font-medium ${device === 'mobile' ? 'text-sm' : 'text-xs'}`} style={{ fontSize: device === 'mobile' ? '' : '10px' }}>{option.label}</div>
-                <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} opacity-75`} style={{ fontSize: device === 'mobile' ? '' : '8px' }}>{option.text}</div>
+                <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} opacity-75`} style={{ fontSize: device === 'mobile' ? '' : '11px' }}>{option.text}</div>
               </button>
             ))}
           </div>
