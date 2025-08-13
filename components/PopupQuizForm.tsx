@@ -284,21 +284,21 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
             {currentQuestion.title}
           </h3>
 
-          <div className="space-y-0 overflow-y-auto" style={{ height: 'calc(100% - 20px)' }}>
+          <div className="space-y-0 overflow-y-auto px-2" style={{ height: 'calc(100% - 20px)' }}>
             {currentQuestion.options.map((option) => (
               <button
                 key={option.id}
                 onClick={() => handleAnswerSelect(option)}
                 disabled={isTransitioning}
-                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-0'} text-left rounded border transition-all duration-200 hover:bg-opacity-90 disabled:opacity-50`}
+                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-1'} text-left rounded border transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--card)',
                   borderColor: 'var(--primary)',
                   color: 'var(--text)',
-                  marginBottom: '1px'
+                  marginBottom: '2px'
                 }}
               >
-                <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} opacity-75`} style={{ fontSize: device === 'mobile' ? '' : '11px' }}>{option.text}</div>
+                <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'}`} style={{ fontSize: device === 'mobile' ? '' : '11px', color: 'var(--text)' }}>{option.text}</div>
               </button>
             ))}
           </div>
