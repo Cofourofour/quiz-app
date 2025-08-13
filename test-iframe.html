@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Test - Exact Showit Dimensions</title>
+    <style>
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .iframe-container {
+            border: 2px solid #333;
+            margin: 20px 0;
+            background-color: #fff;
+        }
+        iframe {
+            border: none;
+            display: block;
+        }
+        .dimensions {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Iframe Test - Showit Dimensions</h1>
+        
+        <div class="dimensions">Desktop: 804px × 305px</div>
+        <div class="iframe-container">
+            <iframe 
+                src="https://co404quiz.vercel.app/quiz/digital-nomad-type?popup=true"
+                width="804" 
+                height="305"
+                title="Desktop Quiz Test">
+            </iframe>
+        </div>
+
+        <div class="dimensions">Mobile: 290px × 521px</div>
+        <div class="iframe-container">
+            <iframe 
+                src="https://co404quiz.vercel.app/quiz/digital-nomad-type?popup=true"
+                width="290" 
+                height="521"
+                title="Mobile Quiz Test">
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>
