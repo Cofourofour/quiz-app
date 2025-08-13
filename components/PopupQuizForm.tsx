@@ -105,9 +105,9 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   const totalQuestions = sortedQuestions.length
   
   // Exact heights for Showit iframe dimensions: Desktop 915x383px, Mobile 290x521px
-  const containerHeight = device === 'mobile' ? 'h-[510px]' : 'h-[370px]'
+  const containerHeight = device === 'mobile' ? 'h-[510px]' : 'h-[375px]'
   const contentPadding = device === 'mobile' ? 'p-2' : 'p-1'
-  const headerPadding = device === 'mobile' ? 'p-1' : 'p-0.5'
+  const headerPadding = device === 'mobile' ? 'p-1' : 'p-1'
 
   const handleStartQuiz = () => {
     setCurrentStep('question')
@@ -279,7 +279,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         </div>
 
         {/* Question Content */}
-        <div className={`flex-1 flex flex-col justify-center ${contentPadding} transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}>
+        <div className={`flex-1 ${contentPadding} transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'} overflow-y-auto`}>
           <h3 className={`${device === 'mobile' ? 'text-base' : 'text-sm'} font-bold mb-1 text-center`} style={{ color: 'var(--text)' }}>
             {currentQuestion.title}
           </h3>
@@ -290,7 +290,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                 key={option.id}
                 onClick={() => handleAnswerSelect(option)}
                 disabled={isTransitioning}
-                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-1'} text-left rounded-lg border-2 transition-all duration-200 hover:scale-105 disabled:opacity-50`}
+                className={`w-full ${device === 'mobile' ? 'p-2' : 'p-1.5'} text-left rounded-lg border-2 transition-all duration-200 hover:scale-105 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--card)',
                   borderColor: 'var(--primary)',
