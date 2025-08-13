@@ -298,7 +298,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   marginBottom: '3px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  maxWidth: 'calc(100% - 8px)',
+                  maxWidth: 'calc(100% - 15px)',
                   marginLeft: 'auto',
                   marginRight: 'auto'
                 }}
