@@ -190,15 +190,10 @@ export async function POST(request: NextRequest) {
       // Continue even if Google Sheets fails
     }
 
-    // Return success response with result
+    // Return success response with result key
     return NextResponse.json({
       success: true,
-      result: {
-        key: result.key,
-        name: result.name,
-        headline: result.headline,
-        description: result.description
-      },
+      result: resultKey, // Just return the key string
       submission_id: Date.now().toString() // Simple ID for frontend
     })
 
