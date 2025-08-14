@@ -171,25 +171,25 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     setError('')
 
     try {
-      console.log('Submitting quiz with data:', {
+      const submitData = {
         quiz_slug: data.quiz.slug,
         email: email.trim(),
         answers,
         consent,
-      })
+      }
+      
+      console.log('Submitting quiz with data:', JSON.stringify(submitData, null, 2))
+      console.log('About to make API call to /api/submit')
       
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          quiz_slug: data.quiz.slug,
-          email: email.trim(),
-          answers,
-          consent,
-        }),
+        body: JSON.stringify(submitData),
       })
+
+      console.log('Received response:', response.status, response.statusText)
 
       if (!response.ok) {
         const errorData = await response.json()
