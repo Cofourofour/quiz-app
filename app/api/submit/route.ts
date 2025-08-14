@@ -94,13 +94,19 @@ export async function POST(request: NextRequest) {
     const answerValues = Object.values(answers)
     const resultKey = calculateResult(answerValues)
 
+    console.log('Debug - answers:', answers)
+    console.log('Debug - answerValues:', answerValues)
+    console.log('Debug - calculated resultKey:', resultKey)
+
     // Get result data
     const results = QuizDB.getResults(quiz.id) as any[]
+    console.log('Debug - available results:', results.map(r => ({ key: r.key, name: r.name })))
     const result = results.find((r: any) => r.key === resultKey)
     
     if (!result) {
+      console.log('Debug - No result found for key:', resultKey)
       return NextResponse.json(
-        { error: 'Result calculation failed' },
+        { error: 'Result calculation failed', debug: { resultKey, availableKeys: results.map(r => r.key) } },
         { status: 500 }
       )
     }
