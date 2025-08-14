@@ -9,7 +9,8 @@ import { hashIP } from '@/lib/utils'
 const SubmissionSchema = z.object({
   quiz_slug: z.string().min(1),
   email: z.string().email(),
-  answers: z.record(z.string(), z.string()) // questionId -> resultKey
+  answers: z.record(z.string(), z.string()), // questionId -> resultKey
+  consent: z.boolean()
 })
 
 // Simple majority calculation for SQLite version
@@ -46,7 +47,15 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { quiz_slug, email, answers } = validation.data
+    const { quiz_slug, email, answers, consent } = validation.data
+
+    // Check consent
+    if (!consent) {
+      return NextResponse.json(
+        { error: 'Consent is required to receive emails' },
+        { status: 400 }
+      )
+    }
 
     // Get quiz data
     const quiz = QuizDB.getQuizBySlug(quiz_slug) as any
