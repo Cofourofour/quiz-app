@@ -290,7 +290,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
 
         {/* Question Content */}
         <div className={`${contentPadding} transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`} style={{ height: 'calc(100% - 40px)' }}>
-          <h3 className={`${device === 'mobile' ? 'text-base' : 'text-xs'} font-bold mb-0 text-center`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '11px' }}>
+          <h3 className={`${device === 'mobile' ? 'text-base' : 'text-lg'} font-bold mb-2 text-center`} style={{ color: 'var(--text)' }}>
             {currentQuestion.title}
           </h3>
 
