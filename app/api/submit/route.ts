@@ -94,19 +94,36 @@ export async function POST(request: NextRequest) {
     const answerValues = Object.values(answers)
     const resultKey = calculateResult(answerValues)
 
-    console.log('Debug - answers:', answers)
-    console.log('Debug - answerValues:', answerValues)
+    console.log('Debug - answers object:', JSON.stringify(answers))
+    console.log('Debug - answerValues array:', JSON.stringify(answerValues))
     console.log('Debug - calculated resultKey:', resultKey)
 
     // Get result data
     const results = QuizDB.getResults(quiz.id) as any[]
-    console.log('Debug - available results:', results.map(r => ({ key: r.key, name: r.name })))
+    console.log('Debug - results from DB:', JSON.stringify(results.map(r => ({ key: r.key, name: r.name }))))
+    console.log('Debug - looking for result with key:', resultKey)
+    
     const result = results.find((r: any) => r.key === resultKey)
+    console.log('Debug - found result:', result ? { key: result.key, name: result.name } : 'null')
     
     if (!result) {
-      console.log('Debug - No result found for key:', resultKey)
+      console.log('Debug - Result lookup failed')
+      console.log('Debug - Available keys:', results.map(r => r.key))
+      console.log('Debug - Search key:', resultKey)
+      console.log('Debug - Key type:', typeof resultKey)
+      console.log('Debug - Key length:', resultKey.length)
+      console.log('Debug - First available key type:', typeof results[0]?.key)
       return NextResponse.json(
-        { error: 'Result calculation failed', debug: { resultKey, availableKeys: results.map(r => r.key) } },
+        { 
+          error: 'Result calculation failed', 
+          debug: { 
+            resultKey, 
+            availableKeys: results.map(r => r.key),
+            answerValues,
+            resultKeyType: typeof resultKey,
+            availableKeyTypes: results.map(r => typeof r.key)
+          } 
+        },
         { status: 500 }
       )
     }
