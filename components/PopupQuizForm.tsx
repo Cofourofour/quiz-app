@@ -198,6 +198,9 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
       }
 
       const { result: quizResult } = await response.json()
+      console.log('API returned result key:', quizResult)
+      console.log('Available frontend results:', data.results.map(r => r.key))
+      
       const resultData = data.results.find(r => r.key === quizResult)
       
       if (resultData) {
