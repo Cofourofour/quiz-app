@@ -171,6 +171,13 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     setError('')
 
     try {
+      console.log('Submitting quiz with data:', {
+        quiz_slug: data.quiz.slug,
+        email: email.trim(),
+        answers,
+        consent,
+      })
+      
       const response = await fetch('/api/submit', {
         method: 'POST',
         headers: {
