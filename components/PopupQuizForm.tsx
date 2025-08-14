@@ -236,7 +236,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Content starting at the very top */}
         <div className="p-0">
           <div className="text-center max-w-md mx-auto">
-            <h2 className={`${device === 'mobile' ? 'text-base' : 'text-xs'} font-bold mb-0`} style={{ color: 'var(--text)' }}>
+            <h2 className={`${device === 'mobile' ? 'text-2xl' : 'text-xl'} font-bold mb-2`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
                 Digital Nomad
@@ -244,17 +244,16 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               Are You?
             </h2>
             
-            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-0`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '10px' }}>
+            <p className={`${device === 'mobile' ? 'text-base' : 'text-lg'} mb-4`} style={{ color: 'var(--text)' }}>
               Answer these 6 questions to discover your digital nomad personality type.
             </p>
 
             <button
               onClick={handleStartQuiz}
-              className={`w-full px-1 ${device === 'mobile' ? 'py-2 text-sm' : 'py-1 text-xs'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
+              className={`w-full px-4 ${device === 'mobile' ? 'py-3 text-lg' : 'py-2 text-base'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
               style={{ 
                 backgroundColor: 'var(--primary)', 
-                color: 'var(--text-light)',
-                fontSize: device === 'mobile' ? '' : '10px'
+                color: 'var(--text-light)'
               }}
             >
               Take the Quiz →
