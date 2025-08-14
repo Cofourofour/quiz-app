@@ -177,7 +177,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          quizId: data.quiz.id,
+          quiz_slug: data.quiz.slug,
           email: email.trim(),
           answers,
           consent,
