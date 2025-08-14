@@ -193,6 +193,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
 
       if (!response.ok) {
         const errorData = await response.json()
+        console.log('Full API error response:', errorData)
         throw new Error(errorData.error || 'Failed to submit quiz')
       }
 
