@@ -175,16 +175,16 @@ export function seedDatabase() {
       name: '🧑‍💻 The Social Butterfly',
       headline: 'You thrive on connection, community, and a packed calendar.',
       description: 'You\'re the nomad who\'s always down for a rooftop party, brunch coworking session, or casual meet-up with strangers who instantly become friends. You love energy, people, and making every city feel like your new home.',
-      email_template: `Hi {{name}}!
+      email_template: `Hi!
 
-🧑‍💻 **You're The Social Butterfly!**
+🧑‍💻 **You're a Social Butterfly!**
 
 You thrive on connection, community, and a packed calendar. You're the nomad who's always down for a rooftop party, brunch coworking session, or casual meet-up with strangers who instantly become friends.
 
 **Perfect destinations for you:**
-• 🇨🇴 Medellin, Colombia - buzzing expat scene and coworking
-• 🇲🇽 Playa del Carmen, Mexico - beachside community and networking
+• �� Lisbon, Portugal - Amazing coworking scene and nomad events
 • 🇲🇽 Mexico City, Mexico - Vibrant community and endless networking
+• 🇮🇩 Bali, Indonesia - The ultimate nomad hub with daily meetups
 
 **Your ideal setup:**
 • Buzzing coworking spaces with regular events
@@ -202,16 +202,16 @@ Co404 Team`
       name: '☕ The Creative Explorer',
       headline: 'You\'re a soul-led wanderer drawn to charm, culture, and good coffee.',
       description: 'You seek out places with character - where cobblestone streets and café culture fuel your creativity. You\'re less about hustle, more about inspiration, and you value beauty, depth, and a sense of local rhythm.',
-      email_template: `Hi {{name}}!
+      email_template: `Hi!
 
-☕ **You're The Creative Explorer!**
+☕ **You're a Creative Explorer!**
 
 You're a soul-led wanderer drawn to charm, culture, and good coffee. You seek out places with character where cobblestone streets and café culture fuel your creativity.
 
 **Perfect destinations for you:**
-• 🇲🇽 Oaxaca, Mexico - art, food, and rich tradition
-• 🇬🇹 Antigua, Guatemala - colonial charm and creative inspiration
-• 🇦🇷 Buenos Aires, Argentina - cultural capital with artistic flair
+• 🇲🇽 Oaxaca, Mexico - Art, food, and rich tradition
+• 🇬🇹 Antigua, Guatemala - Colonial charm and creative inspiration
+• 🇦🇷 Buenos Aires, Argentina - Cultural capital with artistic flair
 
 **Your ideal setup:**
 • Charming neighborhoods with local character
@@ -229,16 +229,16 @@ Co404 Team`
       name: '🏄 The Free-Spirited Adventurer',
       headline: 'You\'re here for the thrill, the freedom, and the views.',
       description: 'Deadlines matter, but so does catching the sunrise above the clouds or dancing barefoot on the beach. You like destinations that mix wild beauty with a touch of chaos - somewhere you can feel fully alive.',
-      email_template: `Hi {{name}}!
+      email_template: `Hi!
 
-🏄 **You're The Free-Spirited Adventurer!**
+🏄 **You're a Free-Spirited Adventurer!**
 
 You're here for the thrill, the freedom, and the views. Deadlines matter, but so does catching the sunrise above the clouds or dancing barefoot on the beach.
 
 **Perfect destinations for you:**
-• 🇨🇴 Medellín, Colombia - mountains, music, movement
-• 🇲🇽 Puerto Escondido, Mexico - epic surf breaks and beach vibes
-• 🇨🇷 Santa Teresa, Costa Rica - wild beauty and adventure spirit
+• 🇨🇴 Medellín, Colombia - Mountains, music, movement
+• 🇲🇽 Puerto Escondido, Mexico - Epic surf breaks and beach vibes
+• 🇨🇷 Santa Teresa, Costa Rica - Wild beauty and adventure spirit
 
 **Your ideal setup:**
 • Beach towns with surf breaks nearby
@@ -256,16 +256,16 @@ Co404 Team`
       name: '🌿 The Mindful Minimalist',
       headline: 'You crave calm, clarity, and space to breathe.',
       description: 'Your version of success includes balance, boundaries, and feeling grounded. You seek quiet corners of the world where you can focus on your well-being, work intentionally, and reconnect with yourself.',
-      email_template: `Hi {{name}}!
+      email_template: `Hi!
 
-🌿 **You're The Mindful Minimalist!**
+🌿 **You're a Mindful Minimalist!**
 
 You crave calm, clarity, and space to breathe. Your version of success includes balance, boundaries, and feeling grounded.
 
 **Perfect destinations for you:**
-• 🇲🇽 San Cristóbal de las Casas, Mexico - peaceful, spiritual, and soulful
-• 🇬🇹 Lake Atitlán, Guatemala - tranquil waters and mindful living
-• 🇨🇴 The Andes near Medellín, Colombia - mountain serenity and wellness
+• 🇲🇽 San Cristóbal de las Casas, Mexico - Peaceful, spiritual, and soulful
+• 🇬🇹 Lake Atitlán, Guatemala - Tranquil waters and mindful living
+• 🇨🇴 The Andes near Medellín, Colombia - Mountain serenity and wellness
 
 **Your ideal setup:**
 • Quiet spaces for deep work and meditation
@@ -293,6 +293,117 @@ Co404 Team`
 
 // Database functions
 export const QuizDB = {
+  // Update existing email templates with new content
+  updateEmailTemplates: () => {
+    const updateQueries = [
+      {
+        key: 'A',
+        name: '🧑‍💻 The Social Butterfly',
+        template: `Hi!
+
+🧑‍💻 **You're a Social Butterfly!**
+
+You thrive on connection, community, and a packed calendar. You're the nomad who's always down for a rooftop party, brunch coworking session, or casual meet-up with strangers who instantly become friends.
+
+**Perfect destinations for you:**
+• 🇵🇹 Lisbon, Portugal - Amazing coworking scene and nomad events
+• 🇲🇽 Mexico City, Mexico - Vibrant community and endless networking
+• 🇮🇩 Bali, Indonesia - The ultimate nomad hub with daily meetups
+
+**Your ideal setup:**
+• Buzzing coworking spaces with regular events
+• Coliving spaces with active communities
+• Cities with established digital nomad scenes
+
+Ready to connect with your tribe? 🌍
+
+Best,
+Co404 Team`
+      },
+      {
+        key: 'B',
+        name: '☕ The Creative Explorer',
+        template: `Hi!
+
+☕ **You're a Creative Explorer!**
+
+You're a soul-led wanderer drawn to charm, culture, and good coffee. You seek out places with character where cobblestone streets and café culture fuel your creativity.
+
+**Perfect destinations for you:**
+• 🇲🇽 Oaxaca, Mexico - Art, food, and rich tradition
+• 🇬🇹 Antigua, Guatemala - Colonial charm and creative inspiration
+• 🇦🇷 Buenos Aires, Argentina - Cultural capital with artistic flair
+
+**Your ideal setup:**
+• Charming neighborhoods with local character
+• Independent coffee shops with personality
+• Cities rich in history and artistic heritage
+
+Let your creativity flow! 🎨
+
+Best,
+Co404 Team`
+      },
+      {
+        key: 'C',
+        name: '🏄 The Free-Spirited Adventurer',
+        template: `Hi!
+
+🏄 **You're a Free-Spirited Adventurer!**
+
+You're here for the thrill, the freedom, and the views. Deadlines matter, but so does catching the sunrise above the clouds or dancing barefoot on the beach.
+
+**Perfect destinations for you:**
+• 🇨🇴 Medellín, Colombia - Mountains, music, movement
+• 🇲🇽 Puerto Escondido, Mexico - Epic surf breaks and beach vibes
+• 🇨🇷 Santa Teresa, Costa Rica - Wild beauty and adventure spirit
+
+**Your ideal setup:**
+• Beach towns with surf breaks nearby
+• Mountains with hiking trails and epic views
+• Places where adventure is always around the corner
+
+Keep chasing those sunrises! 🌅
+
+Best,
+Co404 Team`
+      },
+      {
+        key: 'D',
+        name: '🌿 The Mindful Minimalist',
+        template: `Hi!
+
+🌿 **You're a Mindful Minimalist!**
+
+You crave calm, clarity, and space to breathe. Your version of success includes balance, boundaries, and feeling grounded.
+
+**Perfect destinations for you:**
+• 🇲🇽 San Cristóbal de las Casas, Mexico - Peaceful, spiritual, and soulful
+• 🇬🇹 Lake Atitlán, Guatemala - Tranquil waters and mindful living
+• 🇨🇴 The Andes near Medellín, Colombia - Mountain serenity and wellness
+
+**Your ideal setup:**
+• Quiet spaces for deep work and meditation
+• Nature-connected accommodations
+• Communities focused on wellness and growth
+
+Find your center! 🧘‍♀️
+
+Best,
+Co404 Team`
+      }
+    ]
+
+    const updateStmt = db.prepare('UPDATE results SET name = ?, email_template = ? WHERE key = ?')
+    
+    updateQueries.forEach(({ key, name, template }) => {
+      updateStmt.run(name, template, key)
+      console.log(`Updated email template for result key: ${key}`)
+    })
+    
+    console.log('All email templates updated successfully!')
+  },
+
   getQuizBySlug: (slug: string) => {
     return db.prepare('SELECT * FROM quizzes WHERE slug = ? AND active = 1').get(slug)
   },

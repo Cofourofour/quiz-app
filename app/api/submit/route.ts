@@ -36,6 +36,13 @@ function calculateResult(answers: string[]): string {
 
 export async function POST(request: NextRequest) {
   try {
+    // Update email templates on first run (can be removed after deployment)
+    try {
+      QuizDB.updateEmailTemplates()
+    } catch (error) {
+      console.log('Email template update skipped:', error)
+    }
+
     // Parse and validate request body
     const body = await request.json()
     const validation = SubmissionSchema.safeParse(body)
