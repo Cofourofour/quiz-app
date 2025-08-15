@@ -277,7 +277,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               className={`w-full px-6 ${device === 'mobile' ? 'py-3 text-lg' : 'py-3 text-xl'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
               style={{ 
                 backgroundColor: 'var(--primary)', 
-                color: 'var(--text-light)'
+                color: 'var(--text-light)',
+                WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
               }}
             >
               Take the Quiz →
@@ -345,7 +346,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                     maxWidth: 'calc(100% - 25px)',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    minHeight: device === 'mobile' ? '44px' : '36px' // Better touch targets
+                    minHeight: device === 'mobile' ? '44px' : '36px', // Better touch targets
+                    WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound on mobile
                   }}
                   onMouseEnter={(e) => {
                     if (!isSelected) {
@@ -378,7 +380,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
           <button
             onClick={handlePreviousQuestion}
             className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} px-2 py-0 rounded`}
-            style={{ color: 'var(--primary)', fontSize: device === 'mobile' ? '' : '9px' }}
+            style={{ 
+              color: 'var(--primary)', 
+              fontSize: device === 'mobile' ? '' : '9px',
+              WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
+            }}
           >
             ← Back
           </button>
@@ -447,7 +453,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                 style={{ 
                   backgroundColor: 'var(--primary)', 
                   color: 'var(--text-light)',
-                  minHeight: device === 'mobile' ? '56px' : '48px'
+                  minHeight: device === 'mobile' ? '56px' : '48px',
+                  WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
                 {isSubmitting ? 'Getting Results...' : 'Get My Results →'}
@@ -468,7 +475,10 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               setCurrentStep('question')
             }}
             className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} px-4 py-2 rounded`}
-            style={{ color: 'var(--primary)' }}
+            style={{ 
+              color: 'var(--primary)',
+              WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
+            }}
           >
             ← Back to Questions
           </button>
@@ -515,7 +525,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   borderColor: 'var(--primary)',
                   color: 'var(--primary)',
                   backgroundColor: 'transparent',
-                  fontSize: device === 'mobile' ? '' : '9px'
+                  fontSize: device === 'mobile' ? '' : '9px',
+                  WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
                 Share Quiz
@@ -536,7 +547,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   color: 'var(--text)',
                   backgroundColor: 'transparent',
                   fontSize: device === 'mobile' ? '11px' : '8px',
-                  opacity: 0.7
+                  opacity: 0.7,
+                  WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
                 Not quite right? Retake the quiz
