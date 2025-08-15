@@ -100,16 +100,11 @@ export async function POST(request: NextRequest) {
 
     // Calculate result using majority logic
     const answerValues = Object.values(answers)
-    let resultKey = calculateResult(answerValues)
-
-    // TEMPORARY DEBUG: Force result to A for testing
-    console.log('Original calculated result:', resultKey)
-    resultKey = 'A'
-    console.log('Forcing result to A for debugging')
+    const resultKey = calculateResult(answerValues)
 
     console.log('Debug - answers object:', JSON.stringify(answers))
     console.log('Debug - answerValues array:', JSON.stringify(answerValues))
-    console.log('Debug - final resultKey:', resultKey)
+    console.log('Debug - calculated resultKey:', resultKey)
 
     // Get result data
     const results = QuizDB.getResults(quiz.id) as any[]

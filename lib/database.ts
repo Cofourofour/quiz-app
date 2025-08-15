@@ -119,43 +119,43 @@ export function seedDatabase() {
     insertQuestion.run(q.id, quizId, q.position, q.title)
   })
 
-  // Insert options
+  // Insert options (randomized order, no A/B/C/D labels)
   const options = [
-    // Question 1
-    { id: 'q1a', question_id: 'q1', label: 'A', text: 'A buzzing coworking space with events every night', result_key: 'A' },
-    { id: 'q1b', question_id: 'q1', label: 'B', text: 'A quiet corner of a cute café', result_key: 'B' },
+    // Question 1 - randomized order
     { id: 'q1c', question_id: 'q1', label: 'C', text: 'A hammock and decent Wi-Fi near the beach', result_key: 'C' },
+    { id: 'q1a', question_id: 'q1', label: 'A', text: 'A buzzing coworking space with events every night', result_key: 'A' },
     { id: 'q1d', question_id: 'q1', label: 'D', text: 'Somewhere I can focus on deep work and wellness', result_key: 'D' },
+    { id: 'q1b', question_id: 'q1', label: 'B', text: 'A quiet corner of a cute café', result_key: 'B' },
     
-    // Question 2
-    { id: 'q2a', question_id: 'q2', label: 'A', text: 'Find the nearest coworking space and reserve a desk', result_key: 'A' },
+    // Question 2 - randomized order
     { id: 'q2b', question_id: 'q2', label: 'B', text: 'Walk around and scope out the cafés', result_key: 'B' },
-    { id: 'q2c', question_id: 'q2', label: 'C', text: 'Head straight to the beach or a viewpoint', result_key: 'C' },
     { id: 'q2d', question_id: 'q2', label: 'D', text: 'Unpack in my accommodation and do a quick breathwork session', result_key: 'D' },
+    { id: 'q2a', question_id: 'q2', label: 'A', text: 'Find the nearest coworking space and reserve a desk', result_key: 'A' },
+    { id: 'q2c', question_id: 'q2', label: 'C', text: 'Head straight to the beach or a viewpoint', result_key: 'C' },
     
-    // Question 3
+    // Question 3 - randomized order
+    { id: 'q3d', question_id: 'q3', label: 'D', text: 'Morning hike, green smoothie, sauna and relax', result_key: 'D' },
+    { id: 'q3c', question_id: 'q3', label: 'C', text: 'Surf at sunrise, tacos at lunch, dance at sunset', result_key: 'C' },
     { id: 'q3a', question_id: 'q3', label: 'A', text: 'Networking brunch and rooftop drinks', result_key: 'A' },
     { id: 'q3b', question_id: 'q3', label: 'B', text: 'Lazy start, browsing a local market, journaling in a café', result_key: 'B' },
-    { id: 'q3c', question_id: 'q3', label: 'C', text: 'Surf at sunrise, tacos at lunch, dance at sunset', result_key: 'C' },
-    { id: 'q3d', question_id: 'q3', label: 'D', text: 'Morning hike, green smoothie, sauna and relax', result_key: 'D' },
     
-    // Question 4
-    { id: 'q4a', question_id: 'q4', label: 'A', text: 'Fast Wi-Fi and an active digital nomad scene', result_key: 'A' },
+    // Question 4 - randomized order
     { id: 'q4b', question_id: 'q4', label: 'B', text: 'Charm, culture, and cool coffee shops', result_key: 'B' },
-    { id: 'q4c', question_id: 'q4', label: 'C', text: 'Sun, nature, and cheap cocktails', result_key: 'C' },
     { id: 'q4d', question_id: 'q4', label: 'D', text: 'Peace, personal growth, and natural beauty', result_key: 'D' },
+    { id: 'q4c', question_id: 'q4', label: 'C', text: 'Sun, nature, and cheap cocktails', result_key: 'C' },
+    { id: 'q4a', question_id: 'q4', label: 'A', text: 'Fast Wi-Fi and an active digital nomad scene', result_key: 'A' },
     
-    // Question 5
-    { id: 'q5a', question_id: 'q5', label: 'A', text: 'A buzzing coliving with events and group chat', result_key: 'A' },
-    { id: 'q5b', question_id: 'q5', label: 'B', text: 'A stylish local guesthouse', result_key: 'B' },
-    { id: 'q5c', question_id: 'q5', label: 'C', text: 'A surf hostel near the water', result_key: 'C' },
+    // Question 5 - randomized order
     { id: 'q5d', question_id: 'q5', label: 'D', text: 'An eco-retreat or wellness-themed coliving', result_key: 'D' },
+    { id: 'q5a', question_id: 'q5', label: 'A', text: 'A buzzing coliving with events and group chat', result_key: 'A' },
+    { id: 'q5c', question_id: 'q5', label: 'C', text: 'A surf hostel near the water', result_key: 'C' },
+    { id: 'q5b', question_id: 'q5', label: 'B', text: 'A stylish local guesthouse', result_key: 'B' },
     
-    // Question 6
-    { id: 'q6a', question_id: 'q6', label: 'A', text: '"Your network is your net worth."', result_key: 'A' },
-    { id: 'q6b', question_id: 'q6', label: 'B', text: '"Not all who wander are lost."', result_key: 'B' },
-    { id: 'q6c', question_id: 'q6', label: 'C', text: '"Work hard, play harder."', result_key: 'C' },
-    { id: 'q6d', question_id: 'q6', label: 'D', text: '"Disconnect to reconnect."', result_key: 'D' }
+    // Question 6 - randomized order
+    { id: 'q6c', question_id: 'q6', label: 'C', text: 'Work hard, play harder.', result_key: 'C' },
+    { id: 'q6a', question_id: 'q6', label: 'A', text: 'Your network is your net worth.', result_key: 'A' },
+    { id: 'q6d', question_id: 'q6', label: 'D', text: 'Disconnect to reconnect.', result_key: 'D' },
+    { id: 'q6b', question_id: 'q6', label: 'B', text: 'Not all who wander are lost.', result_key: 'B' }
   ]
 
   const insertOption = db.prepare(`
@@ -289,6 +289,26 @@ Co404 Team`
   })
 
   console.log('Database seeded successfully!')
+}
+
+// Reset quiz data with new randomized options
+export function resetQuizData() {
+  const quizId = 'quiz-1'
+  
+  // Clear existing data
+  db.prepare('DELETE FROM answers').run()
+  db.prepare('DELETE FROM submissions').run()
+  db.prepare('DELETE FROM options').run()
+  db.prepare('DELETE FROM questions').run()
+  db.prepare('DELETE FROM results').run()
+  db.prepare('DELETE FROM quizzes').run()
+  
+  console.log('Cleared existing quiz data')
+  
+  // Re-seed with updated data
+  seedDatabase()
+  
+  console.log('Quiz data reset with randomized answers!')
 }
 
 // Database functions
