@@ -408,11 +408,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Email Form */}
         <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
           <div className="w-full max-w-sm">
-            <h3 className={`${device === 'mobile' ? 'text-base' : 'text-sm'} font-bold mb-1 text-center`} style={{ color: 'var(--text)' }}>
+            <h3 className={`${device === 'mobile' ? 'text-sm' : 'text-xs'} font-bold mb-1 text-center`} style={{ color: 'var(--text)' }}>
               🎁 Get Your Personalized Nomad Guide
             </h3>
             
-            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-2 text-center`} style={{ color: 'var(--text)' }}>
+            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-1 text-center`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '11px' : '10px' }}>
               Unlock your custom travel recommendations and exclusive digital nomad insights!
             </p>
 
@@ -423,11 +423,12 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className={`w-full px-3 ${device === 'mobile' ? 'py-3 text-sm' : 'py-2 text-xs'} rounded border focus:outline-none focus:border-opacity-75`}
+                  className={`w-full px-2 ${device === 'mobile' ? 'py-2 text-xs' : 'py-1 text-xs'} rounded border focus:outline-none focus:border-opacity-75`}
                   style={{ 
                     borderColor: emailError ? '#ef4444' : 'var(--primary)',
                     backgroundColor: 'var(--card)',
-                    minHeight: device === 'mobile' ? '36px' : '32px'
+                    minHeight: device === 'mobile' ? '30px' : '26px',
+                    fontSize: device === 'mobile' ? '12px' : '11px'
                   }}
                 />
                 {emailError && (
@@ -435,12 +436,13 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                 )}
               </div>
 
-              <label className={`flex items-start space-x-2 ${device === 'mobile' ? 'text-sm' : 'text-xs'} my-3`}>
+              <label className={`flex items-start space-x-1 ${device === 'mobile' ? 'text-xs' : 'text-xs'} my-2`} style={{ fontSize: device === 'mobile' ? '10px' : '9px' }}>
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-1"
+                  className="mt-0"
+                  style={{ transform: 'scale(0.8)' }}
                 />
                 <span style={{ color: 'var(--text)' }}>
                   I agree to receive emails with my quiz results and digital nomad tips. You can unsubscribe anytime.
@@ -450,11 +452,12 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               <button
                 onClick={handleEmailSubmit}
                 disabled={isSubmitting}
-                className={`w-full px-3 ${device === 'mobile' ? 'py-3 text-base' : 'py-2 text-sm'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
+                className={`w-full px-2 ${device === 'mobile' ? 'py-2 text-sm' : 'py-1 text-xs'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--primary)', 
                   color: 'var(--text-light)',
-                  minHeight: device === 'mobile' ? '42px' : '36px',
+                  minHeight: device === 'mobile' ? '32px' : '28px',
+                  fontSize: device === 'mobile' ? '13px' : '11px',
                   WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
@@ -475,9 +478,10 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               setCurrentQuestionIndex(totalQuestions - 1)
               setCurrentStep('question')
             }}
-            className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} px-4 py-2 rounded`}
+            className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} px-2 py-1 rounded`}
             style={{ 
               color: 'var(--primary)',
+              fontSize: device === 'mobile' ? '10px' : '9px',
               WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
             }}
           >
