@@ -149,27 +149,24 @@ export function generateResultEmail(email: string, result: any) {
           border: 2px solid #b47775;
         }
         .share-buttons {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 12px;
-          flex-wrap: wrap;
+          text-align: center;
           margin: 15px auto;
           width: 100%;
         }
         .share-button {
-          display: inline-block;
+          display: block !important;
           padding: 12px 18px;
           border-radius: 8px;
           text-decoration: none !important;
           color: #43362d !important;
           font-size: 14px;
           font-weight: 600;
-          min-width: 120px;
+          width: 180px;
+          max-width: 90%;
           text-align: center;
           background-color: #f7f5f4;
           border: 2px solid #b47775;
-          transition: all 0.2s ease;
+          margin: 8px auto !important;
           box-sizing: border-box;
         }
         .share-button:hover {
@@ -181,18 +178,6 @@ export function generateResultEmail(email: string, result: any) {
         }
         .share-button:active {
           color: #43362d !important;
-        }
-        @media (max-width: 600px) {
-          .share-buttons {
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-          }
-          .share-button {
-            width: 200px;
-            max-width: 90%;
-            margin: 0;
-          }
         }
       </style>
     </head>
