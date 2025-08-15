@@ -182,9 +182,9 @@ export function seedDatabase() {
 You thrive on connection, community, and a packed calendar. You're the nomad who's always down for a rooftop party, brunch coworking session, or casual meet-up with strangers who instantly become friends.
 
 **Perfect destinations for you:**
-• Lisbon, Portugal - Amazing coworking scene and nomad events
-• Mexico City, Mexico - Vibrant community and endless networking
-• Bali, Indonesia - The ultimate nomad hub with daily meetups
+• 🇨🇴 Medellin, Colombia - buzzing expat scene and coworking
+• 🇲🇽 Playa del Carmen, Mexico - beachside community and networking
+• 🇲🇽 Mexico City, Mexico - Vibrant community and endless networking
 
 **Your ideal setup:**
 • Buzzing coworking spaces with regular events
