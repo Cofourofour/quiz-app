@@ -39,7 +39,7 @@ interface PopupQuizProps {
 }
 
 export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizProps) {
-  const [currentStep, setCurrentStep] = useState<'intro' | 'question' | 'email' | 'result'>('intro')
+  const [currentStep, setCurrentStep] = useState<'intro' | 'question' | 'email' | 'result' | 'confirmation'>('intro')
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [email, setEmail] = useState('')
   const [consent, setConsent] = useState(false)
@@ -224,7 +224,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
       
       if (resultData) {
         setResult(resultData)
-        setCurrentStep('result')
+        setCurrentStep('confirmation') // Go to confirmation instead of result
       } else {
         throw new Error('Result not found')
       }
@@ -554,6 +554,81 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   fontSize: device === 'mobile' ? '9px' : '6px',
                   opacity: 0.7,
                   WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
+                }}
+              >
+                Not quite right? Retake the quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Confirmation Step (Email Sent)
+  if (currentStep === 'confirmation') {
+    return (
+      <div className={`${containerHeight} flex flex-col`} style={{ backgroundColor: 'var(--background)' }}>
+        {/* Content */}
+        <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
+          <div className="text-center max-w-md">
+            <div className="mb-3 text-4xl">📧</div>
+            
+            <h3 className={`${device === 'mobile' ? 'text-base' : 'text-sm'} font-bold mb-2`} style={{ color: 'var(--text)' }}>
+              🎉 Great job completing the quiz!
+            </h3>
+            
+            <p className={`${device === 'mobile' ? 'text-sm' : 'text-xs'} mb-2`} style={{ color: 'var(--text)' }}>
+              Your personalized results have been sent to:
+            </p>
+            
+            <p className={`${device === 'mobile' ? 'text-sm' : 'text-xs'} font-medium mb-3`} style={{ color: 'var(--primary)' }}>
+              {email}
+            </p>
+            
+            <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} space-y-1 mb-3`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '10px' : '9px' }}>
+              <p>📧 <strong>Sent from:</strong> co404coliving@gmail.com</p>
+              <p>⏱️ <strong>Delivery time:</strong> Usually within 1-2 minutes</p>
+              <p>📁 <strong>Can't find it?</strong> Check your spam/junk folder</p>
+              <p>📱 <strong>Still missing?</strong> Check your promotions tab (Gmail users)</p>
+            </div>
+            
+            <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} p-2 rounded`} style={{ backgroundColor: 'var(--card)', color: 'var(--text)', fontSize: device === 'mobile' ? '9px' : '8px', border: `1px solid var(--primary)` }}>
+              <p><strong>💡 Pro tip:</strong> Add co404coliving@gmail.com to your contacts to ensure future emails reach your inbox!</p>
+            </div>
+
+            <div className="space-y-1 mt-3">
+              <button
+                onClick={shareQuiz}
+                className={`w-full px-2 ${device === 'mobile' ? 'py-1 text-xs' : 'py-1 text-xs'} font-medium rounded border transition-all duration-200 hover:transform hover:scale-105`}
+                style={{ 
+                  borderColor: 'var(--primary)',
+                  color: 'var(--primary)',
+                  backgroundColor: 'transparent',
+                  fontSize: device === 'mobile' ? '' : '7px',
+                  WebkitTapHighlightColor: 'transparent'
+                }}
+              >
+                Share Quiz
+              </button>
+
+              <button
+                onClick={() => {
+                  setCurrentStep('intro')
+                  setCurrentQuestionIndex(0)
+                  setAnswers({})
+                  setEmail('')
+                  setResult(null)
+                  setError('')
+                  setEmailError('')
+                }}
+                className={`w-full px-2 ${device === 'mobile' ? 'py-1 text-xs' : 'py-1 text-xs'} font-medium rounded transition-all duration-200 hover:opacity-80`}
+                style={{ 
+                  color: 'var(--text)',
+                  backgroundColor: 'transparent',
+                  fontSize: device === 'mobile' ? '9px' : '6px',
+                  opacity: 0.7,
+                  WebkitTapHighlightColor: 'transparent'
                 }}
               >
                 Not quite right? Retake the quiz
