@@ -195,6 +195,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         email: email.trim(),
         answers,
         consent,
+        device,
       }
       
       console.log('Submitting quiz with data:', JSON.stringify(submitData, null, 2))

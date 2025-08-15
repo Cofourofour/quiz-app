@@ -10,7 +10,8 @@ const SubmissionSchema = z.object({
   quiz_slug: z.string().min(1),
   email: z.string().email(),
   answers: z.record(z.string(), z.string()), // questionId -> resultKey
-  consent: z.boolean()
+  consent: z.boolean(),
+  device: z.string().optional().default('desktop')
 })
 
 // Simple majority calculation for SQLite version
@@ -54,7 +55,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { quiz_slug, email, answers, consent } = validation.data
+    const { quiz_slug, email, answers, consent, device } = validation.data
 
     // Check consent
     if (!consent) {
@@ -189,6 +190,7 @@ export async function POST(request: NextRequest) {
         quiz_slug,
         result_key: resultKey,
         result_name: result.name,
+        device,
         timestamp: new Date()
       })
       console.log(`Submission saved to Google Sheets: ${email}`)

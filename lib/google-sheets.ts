@@ -32,6 +32,7 @@ export class GoogleSheetsService {
     result_key: string
     result_name: string
     timestamp: Date
+    device?: string
   }) {
     try {
       const spreadsheetId = process.env.GOOGLE_SHEET_ID
@@ -48,12 +49,13 @@ export class GoogleSheetsService {
         data.quiz_slug,
         data.result_key,
         data.result_name,
+        data.device || 'unknown',
         `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/result/${data.result_key}`
       ]]
 
       await this.sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: 'Sheet1!A:F', // Adjust range as needed
+        range: 'Sheet1!A:G', // Adjust range as needed
         valueInputOption: 'RAW',
         insertDataOption: 'INSERT_ROWS',
         resource: {
@@ -84,20 +86,21 @@ export class GoogleSheetsService {
         'Quiz',
         'Result Key',
         'Result Name',
+        'Device',
         'Result URL'
       ]
 
       // Check if headers exist
       const response = await this.sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: 'Sheet1!A1:F1'
+        range: 'Sheet1!A1:G1'
       })
 
       if (!response.data.values || response.data.values.length === 0) {
         // Add headers
         await this.sheets.spreadsheets.values.update({
           spreadsheetId,
-          range: 'Sheet1!A1:F1',
+          range: 'Sheet1!A1:G1',
           valueInputOption: 'RAW',
           resource: {
             values: [headers]
