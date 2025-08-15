@@ -112,26 +112,6 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
     return () => clearInterval(interval)
   }, [])
 
-  // Play subtle click sound
-  const playClickSound = () => {
-    // Create a subtle click sound using Web Audio API
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
-    const oscillator = audioContext.createOscillator()
-    const gainNode = audioContext.createGain()
-    
-    oscillator.connect(gainNode)
-    gainNode.connect(audioContext.destination)
-    
-    oscillator.frequency.value = 800
-    oscillator.type = 'sine'
-    
-    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1)
-    
-    oscillator.start(audioContext.currentTime)
-    oscillator.stop(audioContext.currentTime + 0.1)
-  }
-
   const sortedQuestions = data.questions.sort((a, b) => a.position - b.position)
   const currentQuestion = sortedQuestions[currentQuestionIndex]
   const totalQuestions = sortedQuestions.length
@@ -146,9 +126,6 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   }
 
   const handleAnswerSelect = async (option: QuizOption) => {
-    // Play click sound
-    playClickSound()
-    
     // Show selected state
     setSelectedAnswer(option.id)
     
@@ -296,10 +273,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
             </div>
 
             <button
-              onClick={() => {
-                playClickSound()
-                handleStartQuiz()
-              }}
+              onClick={handleStartQuiz}
               className={`w-full px-6 ${device === 'mobile' ? 'py-3 text-lg' : 'py-3 text-xl'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
               style={{ 
                 backgroundColor: 'var(--primary)', 
@@ -442,11 +416,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className={`w-full px-2 ${device === 'mobile' ? 'py-2 text-sm' : 'py-0 text-xs'} rounded border focus:outline-none focus:border-opacity-75`}
+                  className={`w-full px-4 ${device === 'mobile' ? 'py-4 text-base' : 'py-2 text-sm'} rounded border focus:outline-none focus:border-opacity-75`}
                   style={{ 
                     borderColor: emailError ? '#ef4444' : 'var(--primary)',
                     backgroundColor: 'var(--card)',
-                    fontSize: device === 'mobile' ? '' : '10px'
+                    minHeight: device === 'mobile' ? '48px' : '40px'
                   }}
                 />
                 {emailError && (
@@ -454,14 +428,14 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                 )}
               </div>
 
-              <label className={`flex items-start space-x-1 ${device === 'mobile' ? 'text-xs' : 'text-xs'}`}>
+              <label className={`flex items-start space-x-2 ${device === 'mobile' ? 'text-sm' : 'text-xs'} my-3`}>
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-0"
+                  className="mt-1"
                 />
-                <span style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '8px' }}>
+                <span style={{ color: 'var(--text)' }}>
                   I agree to receive emails with my quiz results and digital nomad tips. You can unsubscribe anytime.
                 </span>
               </label>
@@ -469,11 +443,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               <button
                 onClick={handleEmailSubmit}
                 disabled={isSubmitting}
-                className={`w-full px-2 ${device === 'mobile' ? 'py-2 text-sm' : 'py-0 text-xs'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
+                className={`w-full px-4 ${device === 'mobile' ? 'py-4 text-lg' : 'py-3 text-base'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--primary)', 
                   color: 'var(--text-light)',
-                  fontSize: device === 'mobile' ? '' : '10px'
+                  minHeight: device === 'mobile' ? '56px' : '48px'
                 }}
               >
                 {isSubmitting ? 'Getting Results...' : 'Get My Results →'}
