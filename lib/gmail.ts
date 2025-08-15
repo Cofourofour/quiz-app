@@ -151,16 +151,18 @@ export function generateResultEmail(email: string, result: any) {
         .share-buttons {
           display: flex;
           justify-content: center;
+          align-items: center;
           gap: 12px;
           flex-wrap: wrap;
-          margin-top: 15px;
+          margin: 15px auto;
+          width: 100%;
         }
         .share-button {
           display: inline-block;
           padding: 12px 18px;
           border-radius: 8px;
-          text-decoration: none;
-          color: #43362d;
+          text-decoration: none !important;
+          color: #43362d !important;
           font-size: 14px;
           font-weight: 600;
           min-width: 120px;
@@ -168,19 +170,28 @@ export function generateResultEmail(email: string, result: any) {
           background-color: #f7f5f4;
           border: 2px solid #b47775;
           transition: all 0.2s ease;
+          box-sizing: border-box;
         }
         .share-button:hover {
           background-color: #ede8e5;
-          color: #43362d;
+          color: #43362d !important;
+        }
+        .share-button:visited {
+          color: #43362d !important;
+        }
+        .share-button:active {
+          color: #43362d !important;
         }
         @media (max-width: 600px) {
           .share-buttons {
             flex-direction: column;
             align-items: center;
+            gap: 8px;
           }
           .share-button {
             width: 200px;
-            margin: 5px 0;
+            max-width: 90%;
+            margin: 0;
           }
         }
       </style>
