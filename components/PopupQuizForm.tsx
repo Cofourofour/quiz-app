@@ -117,7 +117,8 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
   const totalQuestions = sortedQuestions.length
   
   // ACTUAL iframe dimensions: Desktop 804x305px, Mobile 290x521px  
-  const containerHeight = device === 'mobile' ? 'h-[510px]' : 'h-[300px]'
+  // Reduced by 20% for better fit
+  const containerHeight = device === 'mobile' ? 'h-[408px]' : 'h-[240px]'
   const contentPadding = device === 'mobile' ? 'p-2' : 'p-0'
   const headerPadding = device === 'mobile' ? 'p-1' : 'p-0'
 
@@ -254,7 +255,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Content starting at the very top */}
         <div className="p-0">
           <div className="text-center max-w-md mx-auto">
-            <h2 className={`${device === 'mobile' ? 'text-2xl' : 'text-3xl'} font-bold mb-3`} style={{ color: 'var(--text)' }}>
+            <h2 className={`${device === 'mobile' ? 'text-xl' : 'text-2xl'} font-bold mb-2`} style={{ color: 'var(--text)' }}>
               What Type of{" "}
               <span style={{ color: 'var(--primary)' }}>
                 Digital Nomad
@@ -262,19 +263,19 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               Are You?
             </h2>
             
-            <p className={`${device === 'mobile' ? 'text-base' : 'text-xl'} mb-2`} style={{ color: 'var(--text)' }}>
+            <p className={`${device === 'mobile' ? 'text-sm' : 'text-base'} mb-1`} style={{ color: 'var(--text)' }}>
               Answer these 6 questions to discover your digital nomad personality type.
             </p>
 
             {/* Time indicator and social proof */}
-            <div className={`${device === 'mobile' ? 'text-sm' : 'text-base'} mb-4 space-y-1`} style={{ color: 'var(--text)' }}>
+            <div className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mb-2 space-y-1`} style={{ color: 'var(--text)' }}>
               <p className="opacity-75">⏱️ Takes just 1 minute</p>
               <p className="opacity-75">👥 Join {completionCount.toLocaleString()} digital nomads who discovered their type</p>
             </div>
 
             <button
               onClick={handleStartQuiz}
-              className={`w-full px-6 ${device === 'mobile' ? 'py-3 text-lg' : 'py-3 text-xl'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
+              className={`w-full px-4 ${device === 'mobile' ? 'py-2 text-base' : 'py-2 text-lg'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105`}
               style={{ 
                 backgroundColor: 'var(--primary)', 
                 color: 'var(--text-light)',
@@ -285,7 +286,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
             </button>
 
             {/* Privacy badge */}
-            <div className={`${device === 'mobile' ? 'text-xs' : 'text-sm'} mt-2 opacity-60 flex items-center justify-center gap-1`} style={{ color: 'var(--text)' }}>
+            <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mt-1 opacity-60 flex items-center justify-center gap-1`} style={{ color: 'var(--text)' }}>
               <span>🔒</span>
               <span>Your data is secure</span>
             </div>
@@ -320,12 +321,12 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         </div>
 
         {/* Question Content */}
-        <div className={`${contentPadding} transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`} style={{ height: 'calc(100% - 40px)' }}>
-          <h3 className={`${device === 'mobile' ? 'text-base' : 'text-lg'} font-bold mb-2 text-center`} style={{ color: 'var(--text)' }}>
+        <div className={`${contentPadding} transition-opacity duration-300 ${isTransitioning ? 'opacity-50' : 'opacity-100'}`} style={{ height: 'calc(100% - 30px)' }}>
+          <h3 className={`${device === 'mobile' ? 'text-sm' : 'text-base'} font-bold mb-1 text-center`} style={{ color: 'var(--text)' }}>
             {currentQuestion.title}
           </h3>
 
-          <div className="space-y-0 overflow-y-auto px-4" style={{ height: 'calc(100% - 20px)' }}>
+          <div className="space-y-0 overflow-y-auto px-2" style={{ height: 'calc(100% - 15px)' }}>
             {currentQuestion.options.map((option) => {
               const isSelected = selectedAnswer === option.id
               return (
@@ -333,20 +334,20 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   key={option.id}
                   onClick={() => handleAnswerSelect(option)}
                   disabled={isTransitioning || isLoading}
-                  className={`w-full ${device === 'mobile' ? 'p-3' : 'p-2'} text-left rounded-lg border-2 transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 transform border-opacity-60 hover:border-opacity-100 ${
+                  className={`w-full ${device === 'mobile' ? 'p-2' : 'p-1'} text-left rounded-lg border-2 transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 transform border-opacity-60 hover:border-opacity-100 ${
                     isSelected ? 'scale-105 ring-2 ring-opacity-50' : ''
                   }`}
                   style={{ 
                     backgroundColor: isSelected ? 'var(--primary)' : 'var(--card)',
                     borderColor: 'var(--primary)',
                     color: isSelected ? 'var(--text-light)' : 'var(--text)',
-                    marginBottom: '4px',
+                    marginBottom: '2px',
                     boxShadow: isSelected ? '0 8px 25px rgba(180, 119, 117, 0.4)' : '0 1px 3px rgba(0,0,0,0.1)',
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    maxWidth: 'calc(100% - 25px)',
+                    maxWidth: 'calc(100% - 15px)',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    minHeight: device === 'mobile' ? '44px' : '36px', // Better touch targets
+                    minHeight: device === 'mobile' ? '32px' : '28px', // Better touch targets - reduced
                     WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound on mobile
                   }}
                   onMouseEnter={(e) => {
@@ -364,7 +365,7 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                     }
                   }}
                 >
-                  <div className={`${device === 'mobile' ? 'text-sm' : 'text-sm'} font-medium transition-all duration-300 flex items-center`}>
+                  <div className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} font-medium transition-all duration-300 flex items-center`}>
                     {isSelected && <span className="mr-2">✓</span>}
                     {option.text}
                     {isLoading && isSelected && <span className="ml-auto">⟳</span>}
@@ -407,11 +408,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Email Form */}
         <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
           <div className="w-full max-w-sm">
-            <h3 className={`${device === 'mobile' ? 'text-lg' : 'text-base'} font-bold mb-2 text-center`} style={{ color: 'var(--text)' }}>
+            <h3 className={`${device === 'mobile' ? 'text-base' : 'text-sm'} font-bold mb-1 text-center`} style={{ color: 'var(--text)' }}>
               🎁 Get Your Personalized Nomad Guide
             </h3>
             
-            <p className={`${device === 'mobile' ? 'text-sm' : 'text-sm'} mb-3 text-center`} style={{ color: 'var(--text)' }}>
+            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-2 text-center`} style={{ color: 'var(--text)' }}>
               Unlock your custom travel recommendations and exclusive digital nomad insights!
             </p>
 
@@ -422,11 +423,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className={`w-full px-4 ${device === 'mobile' ? 'py-4 text-base' : 'py-2 text-sm'} rounded border focus:outline-none focus:border-opacity-75`}
+                  className={`w-full px-3 ${device === 'mobile' ? 'py-3 text-sm' : 'py-2 text-xs'} rounded border focus:outline-none focus:border-opacity-75`}
                   style={{ 
                     borderColor: emailError ? '#ef4444' : 'var(--primary)',
                     backgroundColor: 'var(--card)',
-                    minHeight: device === 'mobile' ? '48px' : '40px'
+                    minHeight: device === 'mobile' ? '36px' : '32px'
                   }}
                 />
                 {emailError && (
@@ -449,11 +450,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
               <button
                 onClick={handleEmailSubmit}
                 disabled={isSubmitting}
-                className={`w-full px-4 ${device === 'mobile' ? 'py-4 text-lg' : 'py-3 text-base'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
+                className={`w-full px-3 ${device === 'mobile' ? 'py-3 text-base' : 'py-2 text-sm'} font-semibold rounded transition-all duration-200 hover:transform hover:scale-105 disabled:opacity-50`}
                 style={{ 
                   backgroundColor: 'var(--primary)', 
                   color: 'var(--text-light)',
-                  minHeight: device === 'mobile' ? '56px' : '48px',
+                  minHeight: device === 'mobile' ? '42px' : '36px',
                   WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
@@ -501,31 +502,31 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
         {/* Result Content */}
         <div className={`flex-1 flex items-center justify-center ${contentPadding}`}>
           <div className="text-center max-w-md">
-            <div className="mb-0 text-base">🎉</div>
+            <div className="mb-0 text-sm">🎉</div>
             
-            <h3 className={`${device === 'mobile' ? 'text-xl' : 'text-xs'} font-bold mb-0`} style={{ color: 'var(--primary)', fontSize: device === 'mobile' ? '' : '12px' }}>
+            <h3 className={`${device === 'mobile' ? 'text-base' : 'text-xs'} font-bold mb-0`} style={{ color: 'var(--primary)', fontSize: device === 'mobile' ? '' : '10px' }}>
               {result.name}
             </h3>
             
             {result.headline && (
-              <p className={`${device === 'mobile' ? 'text-base' : 'text-xs'} font-medium mb-0`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '10px' }}>
+              <p className={`${device === 'mobile' ? 'text-sm' : 'text-xs'} font-medium mb-0`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '8px' }}>
                 {result.headline}
               </p>
             )}
             
-            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-3`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '8px' }}>
+            <p className={`${device === 'mobile' ? 'text-xs' : 'text-xs'} mb-2`} style={{ color: 'var(--text)', fontSize: device === 'mobile' ? '' : '7px' }}>
               Check your email for your complete personality profile and personalized recommendations!
             </p>
 
             <div className="space-y-2">
               <button
                 onClick={shareQuiz}
-                className={`w-full px-3 ${device === 'mobile' ? 'py-2 text-sm' : 'py-1 text-xs'} font-medium rounded border transition-all duration-200 hover:transform hover:scale-105`}
+                className={`w-full px-2 ${device === 'mobile' ? 'py-1 text-xs' : 'py-1 text-xs'} font-medium rounded border transition-all duration-200 hover:transform hover:scale-105`}
                 style={{ 
                   borderColor: 'var(--primary)',
                   color: 'var(--primary)',
                   backgroundColor: 'transparent',
-                  fontSize: device === 'mobile' ? '' : '9px',
+                  fontSize: device === 'mobile' ? '' : '7px',
                   WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
               >
@@ -542,11 +543,11 @@ export default function PopupQuizForm({ data, device = 'desktop' }: PopupQuizPro
                   setError('')
                   setEmailError('')
                 }}
-                className={`w-full px-3 ${device === 'mobile' ? 'py-1 text-xs' : 'py-1 text-xs'} font-medium rounded transition-all duration-200 hover:opacity-80`}
+                className={`w-full px-2 ${device === 'mobile' ? 'py-1 text-xs' : 'py-1 text-xs'} font-medium rounded transition-all duration-200 hover:opacity-80`}
                 style={{ 
                   color: 'var(--text)',
                   backgroundColor: 'transparent',
-                  fontSize: device === 'mobile' ? '11px' : '8px',
+                  fontSize: device === 'mobile' ? '9px' : '6px',
                   opacity: 0.7,
                   WebkitTapHighlightColor: 'transparent' // Disable tap highlight/sound
                 }}
