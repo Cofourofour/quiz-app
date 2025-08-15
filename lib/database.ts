@@ -209,9 +209,9 @@ Co404 Team`
 You're a soul-led wanderer drawn to charm, culture, and good coffee. You seek out places with character where cobblestone streets and café culture fuel your creativity.
 
 **Perfect destinations for you:**
-• Prague, Czech Republic - Stunning architecture and cozy cafés
-• Buenos Aires, Argentina - Rich culture and artistic inspiration
-• Paris, France - The ultimate city for creativity and café culture
+• 🇲🇽 Oaxaca, Mexico - art, food, and rich tradition
+• 🇬🇹 Antigua, Guatemala - colonial charm and creative inspiration
+• 🇦🇷 Buenos Aires, Argentina - cultural capital with artistic flair
 
 **Your ideal setup:**
 • Charming neighborhoods with local character
@@ -236,9 +236,9 @@ Co404 Team`
 You're here for the thrill, the freedom, and the views. Deadlines matter, but so does catching the sunrise above the clouds or dancing barefoot on the beach.
 
 **Perfect destinations for you:**
-• Costa Rica - Epic surfing and pure vida vibes
-• Thailand - Beaches, adventure, and affordable paradise
-• Colombia - Wild beauty and endless adventures
+• 🇨🇴 Medellín, Colombia - mountains, music, movement
+• 🇲🇽 Puerto Escondido, Mexico - epic surf breaks and beach vibes
+• 🇨🇷 Santa Teresa, Costa Rica - wild beauty and adventure spirit
 
 **Your ideal setup:**
 • Beach towns with surf breaks nearby
@@ -263,9 +263,9 @@ Co404 Team`
 You crave calm, clarity, and space to breathe. Your version of success includes balance, boundaries, and feeling grounded.
 
 **Perfect destinations for you:**
-• Ubud, Bali - Wellness retreats and peaceful vibes
-• Rishikesh, India - Yoga capital with spiritual energy
-• Madeira, Portugal - Nature, tranquility, and slow living
+• 🇲🇽 San Cristóbal de las Casas, Mexico - peaceful, spiritual, and soulful
+• 🇬🇹 Lake Atitlán, Guatemala - tranquil waters and mindful living
+• 🇨🇴 The Andes near Medellín, Colombia - mountain serenity and wellness
 
 **Your ideal setup:**
 • Quiet spaces for deep work and meditation
